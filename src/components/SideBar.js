@@ -22,7 +22,7 @@ function SideBar() {
           </Offcanvas.Header>
           <Offcanvas.Body>
             Some text as placeholder. In real life you can have the elements you
-            have chosen. Like, text, images, lists, etc.
+            have chosen. Like, text, images, lists, etc.ssss
           </Offcanvas.Body>
         </Offcanvas>
       </div>
