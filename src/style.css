@@ -4,11 +4,14 @@
 }
 :root {
   --light-grey: #a8afbb;
+  --gold: #d4ca96;
+  --light-gold: #f3eed1;
+  --lightest-gold: #eeece4;
   --active-text: #ff9a3c;
   --header-height: 40px;
   --page-height: 100vh - 4rem;
+  --inset-shadow : rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-
 .w-100 {
   width: 100%;
 }
@@ -41,10 +44,9 @@ li {
 }
 .defaultContainer {
   background-color: white;
-  border-radius: 5px;
-  border: solid 1px grey;
-  padding: 10px;
-  margin: 10px 10px;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: var(--inset-shadow)
 }
 
 .row {
@@ -54,7 +56,6 @@ li {
 /* Page */
 body {
   margin: 0;
- 
   background-color: #e0eef0;
 }
 *,
@@ -65,7 +66,11 @@ body {
   user-select: none;
 }
 *:hover,*:focus{
-  outline: none;
+  outline: 0 !important;
+}
+.form-control:focus{
+  border: 2px solid rgba(140, 145, 96, 0.5);
+  box-shadow: none;
 }
 h1,
 h2,
@@ -76,21 +81,22 @@ h6 {
   font-weight: 400 !important;
 }
 .pageContainer{
-  border: 1px solid black;
+  min-height: 100vh;
 }
 .mainColumn{
   max-width: 1400px;
   margin: auto;
-  padding: 1rem;
+  padding: 2rem 1rem;
 }
+
 
 /* header */
 header {
   position: sticky;
   top: 0px;
-  background-color: white;
+  background-color: var(--gold);
   padding: .7rem;
-  
+  z-index: 100;
 }
 .headerContainer{
   max-width: 1400px;
@@ -100,6 +106,9 @@ header {
 
 .headerMiddle{
   margin: auto;
+}
+.headerMiddle h3 {
+  margin: 0;
 }
 
 /* -- header */
@@ -113,8 +122,8 @@ header {
  background-color: white;
  position: relative;
  width: 50px;
+ height: 50px;
  border: none !important;
- aspect-ratio: 1;
  border-radius: 50%;
  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
@@ -138,3 +147,112 @@ header {
 /* -- menu */
 
 
+/* logo */
+
+.logo{
+  width: 60px;
+  height: 60px;
+}
+
+/* -- logo */
+/* hero Section */
+
+
+
+/* -- hero Section */
+
+/* carousel */
+
+.carouselContainer{
+  border-radius: 20px;
+  height: 500px;
+  overflow: hidden; 
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+
+.carouselImage{
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+.carousel-control-prev-icon{
+  background-image : url('data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 ><path d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/></svg>') !important;
+}
+.carousel-control-next-icon {
+  background-image : url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 ><path d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3e%3c/svg%3e") !important;
+}
+/* -- carousel */
+
+/* advance Search */
+
+.advanceSearchContainer {
+  text-align: center;
+  padding: 0rem 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.welcomeText{
+  height: 30%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.advanceSearchFrom{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+
+/* -- advance Search */
+
+
+/* category section */
+.categoriesContainer{
+  margin-top: 4rem;
+
+}
+.categoryItem{
+  display: flex;
+  flex-direction: column;
+  
+}
+.categoryImageContainer{
+  width: 70px;
+  margin-bottom: 15px;
+}
+
+.categoryTextContainer{
+  background-color: var(--light-gold);
+  border-radius: 20px;
+  padding: 1rem;
+}
+
+.categoryText{
+line-height: normal;
+font-size: 2.2rem;
+align-items: center;
+text-align: center;
+}
+/* -- category section */
+
+
+/* single appointment Row*/
+
+.appointmentCard{
+  background-color:var(--lightest-gold);
+  margin: 1rem 0rem;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.refreshButton img{
+  width: 40px;
+  aspect-ratio: 1;
+}
+
+/* -- single appointment Row*/
