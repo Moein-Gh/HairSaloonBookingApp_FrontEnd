@@ -32,10 +32,10 @@
   color: black;
 }
 .btn:hover{
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 .btn:active{
-  transform: scale(.95);
+  transform: scale(1);
   outline: none !important;
   box-shadow: var(--shadow) !important;
 }

@@ -1,18 +1,46 @@
-import React from "react";
-import { Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Col, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import Appointment from './Appointment'
+let appointment = {
+  key: 1,
+  date: '1400/02/01',
+  hour: '7:00',
+  facilityName: 'سام راد',
+  barberName: 'فراز محمدی',
+  cost: 50000,
+}
 
 const NewAppointment = () => {
   return (
     <>
-      <Col className="defaultContainer mt-3">
-        <div className="flex-center position-relative">
-          <h4 className="">نوبت های قبلی</h4>
+      <Col className='defaultContainer mt-3'>
+        <div className='flex-center position-relative'>
+          <h4 className=''>نوبت جدید</h4>
         </div>
-        <Col></Col>
+        <hr />
+        <Row>
+          <h5>تکرار آخرین نوبت</h5>
+          <Row>
+            <Appointment
+              appointment={appointment}
+              repeatAppointmentButton={true}
+            />
+          </Row>
+        </Row>
+        <Row>
+          <h5>تکرار آخرین نوبت</h5>
+          <Row>
+            <Appointment
+              appointment={appointment}
+              repeatAppointmentButton={true}
+            />
+          </Row>
+        </Row>
+        <Row></Row>
       </Col>
     </>
-  );
-};
+  )
+}
 
-export default NewAppointment;
+export default NewAppointment
