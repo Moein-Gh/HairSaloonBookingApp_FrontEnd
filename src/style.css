@@ -10,7 +10,7 @@
   --active-text: #ff9a3c;
   --header-height: 40px;
   --page-height: 100vh - 4rem;
-  --inset-shadow : rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  --inset-shadow :  rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 .w-100 {
   width: 100%;
@@ -169,12 +169,17 @@ header {
   overflow: hidden; 
   box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
+.carouselItem{
+  width: 100%;
+  height: 100%;
+}
 
 .carouselImage{
-  object-fit: cover;
-  object-position: center;
+  width: 100% !important;
+  height: 100% !important;
   z-index: 0;
 }
+
 
 .carousel-control-prev-icon{
   background-image : url('data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 ><path d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/></svg>') !important;
