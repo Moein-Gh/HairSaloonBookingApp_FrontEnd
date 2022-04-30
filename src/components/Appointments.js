@@ -7,11 +7,11 @@ const Appointments = () => {
   return (
     <>
       <Row>
-        <Col lg={6}>
+        <Col lg={6} className="appointmentRightContainer">
           <NewAppointment />
         </Col>
         <Col lg={6}>
-          <AppointmentHistory />
+          <AppointmentHistory className="appointmentLeftContainer" />
         </Col>
       </Row>
     </>

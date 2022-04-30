@@ -10,7 +10,7 @@
   --active-text: #ff9a3c;
   --header-height: 40px;
   --page-height: 100vh - 4rem;
-  --inset-shadow : rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  --shadow : rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .w-100 {
   width: 100%;
@@ -23,6 +23,34 @@
 }
 .btn {
   border-radius: 5px;
+  border: 1px solid black;
+  box-shadow: var(--shadow);
+  background-color: white;
+  padding: 5px;
+  margin: 5px 0px;
+  transition: transform .1s ease-in-out;
+  color: black;
+}
+.btn:hover{
+  transform: scale(1.05);
+}
+.btn:active{
+  transform: scale(.95);
+  outline: none !important;
+  box-shadow: var(--shadow) !important;
+}
+.btn:focus{
+  outline: none !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.topLeftAbsoluteButton{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.topLeftAbsoluteButton button{
+  margin: 0;
 }
 li {
   list-style: none;
@@ -46,7 +74,7 @@ li {
   background-color: white;
   padding: 2rem;
   border-radius: 20px;
-  box-shadow: var(--inset-shadow)
+  box-shadow: var(--shadow)
 }
 
 .row {
@@ -241,7 +269,20 @@ text-align: center;
 /* -- category section */
 
 
+/* appointments section */
+
+.appointmentLeftContainer{
+  padding-right: 10px;
+}
+.appointmentRightContainer{
+  padding-left: 10px;
+}
+  
+
+/* -- appointments section */
+
 /* single appointment Row*/
+
 
 .appointmentCard{
   background-color:var(--lightest-gold);
@@ -249,10 +290,14 @@ text-align: center;
   padding: 15px;
   border-radius: 10px;
 }
-
-.refreshButton img{
-  width: 40px;
-  aspect-ratio: 1;
+.appointmentButtonContainer{
+  text-align: center;
+}
+.appointmentTextContainer{
+  display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
 }
 
 /* -- single appointment Row*/

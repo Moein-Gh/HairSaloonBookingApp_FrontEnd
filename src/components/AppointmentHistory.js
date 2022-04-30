@@ -1,6 +1,7 @@
 import React from "react";
 import { Col } from "react-bootstrap";
 import Appointment from "./Appointment";
+import { Link } from "react-router-dom";
 
 const appointments = [
   {
@@ -8,6 +9,7 @@ const appointments = [
     date: "1400/02/01",
     hour: "7:00",
     facilityName: "سام راد",
+    barberName: "فراز محمدی",
     cost: 50000,
   },
   {
@@ -15,6 +17,7 @@ const appointments = [
     date: "1400/02/01",
     hour: "7:00",
     facilityName: "سام راد",
+    barberName: "فراز محمدی",
     cost: 50000,
   },
   {
@@ -22,6 +25,7 @@ const appointments = [
     date: "1400/02/01",
     hour: "7:00",
     facilityName: "سام راد",
+    barberName: "فراز محمدی",
     cost: 50000,
   },
   {
@@ -29,6 +33,7 @@ const appointments = [
     date: "1400/02/01",
     hour: "7:00",
     facilityName: "سام راد",
+    barberName: "فراز محمدی",
     cost: 50000,
   },
   {
@@ -36,6 +41,7 @@ const appointments = [
     date: "1400/02/01",
     hour: "7:00",
     facilityName: "سام راد",
+    barberName: "فراز محمدی",
     cost: 50000,
   },
 ];
@@ -44,8 +50,11 @@ const AppointmentHistory = () => {
   return (
     <>
       <Col className="defaultContainer mt-3">
-        <div className="flex-center">
+        <div className="flex-center position-relative">
           <h4 className="">نوبت های قبلی</h4>
+          <Link to={"/"} className="topLeftAbsoluteButton">
+            <button className="btn">مشاهده همه</button>
+          </Link>
         </div>
         <Col>
           {appointments.map((appointment) => {
