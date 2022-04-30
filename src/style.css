@@ -10,11 +10,7 @@
   --active-text: #ff9a3c;
   --header-height: 40px;
   --page-height: 100vh - 4rem;
-<<<<<<< HEAD
-  --inset-shadow :  rgba(0, 0, 0, 0.16) 0px 1px 4px;
-=======
-  --shadow : rgba(0, 0, 0, 0.24) 0px 3px 8px;
->>>>>>> f9116f832c77099489fe8d228a2b6c60f0aa85a6
+  --shadow : rgba(0, 0, 0, 0.24) 0px a3px 8px;
 }
 .w-100 {
   width: 100%;
