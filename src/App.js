@@ -9,6 +9,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import BarberShopScreen from "./screens/BarberShopScreen";
 import BarberDashboard from "./screens/BarberDashboard";
+import UserprofileScreen from "./screens/UserprofileScreen";
+import BookingScreen from "./screens/BookingScreen";
 function App() {
   return (
     <Router>
@@ -26,9 +28,14 @@ function App() {
                     element={<BarberShopScreen />}
                   />
                   <Route
-                    path="/barberDashboard"
+                    path="/bookingScreen"
                     exact
-                    element={<BarberDashboard />}
+                    element={<BookingScreen />}
+                  />
+                  <Route
+                    path="/UserprofileScreen"
+                    exact
+                    element={<UserprofileScreen />}
                   />
                 </Routes>
               </Col>

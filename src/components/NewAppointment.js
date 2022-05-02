@@ -14,7 +14,7 @@ let appointment = {
 const NewAppointment = () => {
   return (
     <>
-      <Col className="defaultContainer h100 mt-3">
+      <Col className="defaultContainer h-100 mt-3">
         <div className="flex-center position-relative">
           <h4 className="">نوبت جدید</h4>
         </div>

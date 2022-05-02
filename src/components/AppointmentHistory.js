@@ -33,7 +33,7 @@ const appointments = [
 const AppointmentHistory = () => {
   return (
     <>
-      <Col className="defaultContainer h100 mt-3">
+      <Col className="defaultContainer h-100 mt-3">
         <div className="flex-center position-relative">
           <h4 className="">نوبت های قبلی</h4>
           <Link to={"/"} className="topLeftAbsoluteButton">
