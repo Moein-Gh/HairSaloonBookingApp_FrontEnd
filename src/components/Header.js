@@ -12,7 +12,9 @@ const Header = () => {
             <SideBar />
           </Col>
           <Col xs={8} className="flex-center headerMiddle text-align-center">
-            <h1>سینوا</h1>
+            <Link to={"/"} className="headerLink">
+              <h1>سینوا</h1>
+            </Link>
           </Col>
           <Col xs={2} className="flex-center text-align-center">
             <Link to={"/"}>

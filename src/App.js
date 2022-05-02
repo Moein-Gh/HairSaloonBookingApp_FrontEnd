@@ -6,8 +6,9 @@ import React from "react";
 import HomeScreen from "./screens/HomeScreen.js";
 import { Col, Row } from "react-bootstrap";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import BarberShopScreen from "./screens/BarberShopScreen";
-import UserProfileScreen from "./screens/UserProfileScreen";
+import BarberDashboard from "./screens/BarberDashboard";
 function App() {
   return (
     <Router>
@@ -25,13 +26,14 @@ function App() {
                     element={<BarberShopScreen />}
                   />
                   <Route
-                    path="/userprofile"
+                    path="/barberDashboard"
                     exact
-                    element={<UserProfileScreen />}
+                    element={<BarberDashboard />}
                   />
                 </Routes>
               </Col>
             </div>
+            <Footer />
           </main>
         </Row>
       </div>
