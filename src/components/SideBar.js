@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Col, Image, Offcanvas, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import NavItem from "./NavItem";
+import Profile from "./Profile";
 
 function SideBar() {
   const [show, setShow] = useState(false);
@@ -30,7 +31,6 @@ function SideBar() {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           id="Capa_1"
-          enable-background="new 0 0 512.002 512.002"
           height="25"
           viewBox="0 0 512 512"
           width="25"
@@ -66,8 +66,7 @@ function SideBar() {
       ),
     },
   ];
-  let image = "./images/profile.jpg";
-  let name = "هانیه قربانعلی";
+
   return (
     <>
       <div>
@@ -87,20 +86,7 @@ function SideBar() {
             <Offcanvas.Title>به سینوا خوش آمدید</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
-            <Col>
-              <Row>
-                <div className="profileImageContainer defaultContainer">
-                  <Image src={image} className="menuProfileImage" />
-                  <h4>{name}</h4>
-                  <Link to={"/UserprofileScreen"}>
-                    <button className="btn mt-3 mx-1">مشاهده پروفایل</button>
-                  </Link>
-                  <Link to={"/"}>
-                    <button className="btn mt-3 mx-1">خروج</button>
-                  </Link>
-                </div>
-              </Row>
-            </Col>
+            <Profile />
 
             <Row>
               <Col className="defaultContainer mt-2">
