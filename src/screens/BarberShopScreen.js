@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
 const BarberShopScreen = () => {
-  return <> BarberShopScreen</>;
-};
+  return <>{/* <BarberShopHero /> */}</>
+}
 
-export default BarberShopScreen;
+export default BarberShopScreen
