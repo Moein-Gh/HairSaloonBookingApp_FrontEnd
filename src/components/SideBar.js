@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Col, Offcanvas, Row } from "react-bootstrap";
 import NavItem from "./NavItem";
-import Profile from "./Profile";
+import MenuProfile from "./MenuProfile";
 
 function SideBar() {
   const [show, setShow] = useState(false);
@@ -85,7 +85,7 @@ function SideBar() {
             <Offcanvas.Title>به سینوا خوش آمدید</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
-            <Profile setShow={setShow} />
+            <MenuProfile setShow={setShow} />
 
             <Row className="navigation defaultContainer mt-2">
               <Col>

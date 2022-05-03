@@ -3,14 +3,14 @@ import { Col, Image, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 let image = "./images/profile.jpg";
 let name = "هانیه قربانعلی";
-const Profile = ({ setShow }) => {
+const MenuProfile = ({ setShow }) => {
   return (
     <Col>
       <Row className="defaultContainer menuProfileContainer">
-        <Col xs={3} className="profileImageContainer">
+        <Col xs={3} className="menuProfileImageContainer">
           <Image src={image} className="menuProfileImage" />
         </Col>
-        <Col xs={9} className="profileInfoContainer flex-center">
+        <Col xs={9} className="menuProfileInfoContainer flex-center">
           <div>
             <h6>{name} خوش آمدید</h6>
             <Link
@@ -36,4 +36,4 @@ const Profile = ({ setShow }) => {
   );
 };
 
-export default Profile;
+export default MenuProfile;

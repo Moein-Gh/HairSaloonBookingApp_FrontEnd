@@ -1,62 +1,22 @@
-import React from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay } from 'swiper'
-import 'swiper/css/bundle'
-import ShopCard from './ShopCard'
-import { Row } from 'react-bootstrap'
-import { Pagination } from 'swiper'
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper";
+import "swiper/css/bundle";
+import ShopCard from "./ShopCard";
+import { Row } from "react-bootstrap";
+import { Pagination } from "swiper";
 // import 'swiper/modules'
-let shops = [
-  {
-    name: 'سام راد',
-    image: './images/1.jpg',
-    customerGender: 'آقایان',
-    location: 'یافت آباد',
-  },
-  {
-    name: 'سام راد',
-    image: './images/2.jpg',
-    customerGender: 'آقایان',
-    location: 'یافت آباد',
-  },
-  {
-    name: 'سام راد',
-    image: './images/3.jpg',
-    customerGender: 'آقایان',
-    location: 'یافت آباد',
-  },
-  {
-    name: 'سام راد',
-    image: './images/1.jpg',
-    customerGender: 'آقایان',
-    location: 'یافت آباد',
-  },
-  {
-    name: 'سام راد',
-    image: './images/2.jpg',
-    customerGender: 'آقایان',
-    location: 'یافت آباد',
-  },
-  {
-    name: 'سام راد',
-    image: './images/3.jpg',
-    customerGender: 'آقایان',
-    location: 'یافت آباد',
-  },
-  {
-    name: 'سام راد',
-    image: './images/1.jpg',
-    customerGender: 'آقایان',
-    location: 'یافت آباد',
-  },
-]
 
-export default function CardSlider() {
+export default function CardSlider({ items: shops, title }) {
   return (
     <>
-      <Row className='defaultContainer mt-3 text-align-center'>
-        <h3>مخصوص آقایان</h3>
-        <Row className='cardSliderContainer'>
+      <Row className="defaultContainer mt-3 text-align-center">
+        <div className="cardSliderTextContainer">
+          <h3>{title}</h3>
+        </div>
+        <hr />
+
+        <Row className="cardSliderContainer">
           <Swiper
             slidesPerView={2}
             spaceBetween={0}
@@ -84,18 +44,18 @@ export default function CardSlider() {
             }}
             pagination={true}
             modules={[Autoplay, Pagination]}
-            className='mySwiper'
+            className="mySwiper"
           >
             {shops.map((item) => {
               return (
                 <SwiperSlide>
                   <ShopCard shop={item} />
                 </SwiperSlide>
-              )
+              );
             })}
           </Swiper>
         </Row>
       </Row>
     </>
-  )
+  );
 }
