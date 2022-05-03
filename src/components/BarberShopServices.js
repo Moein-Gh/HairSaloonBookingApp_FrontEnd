@@ -39,7 +39,7 @@ function a11yProps(index) {
   };
 }
 
-export default function UserprofileScreen() {
+export default function BarberShopServices() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {

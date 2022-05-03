@@ -539,7 +539,6 @@ padding-right: 15%;
 .profileInfoKey{
   font-size: 1.4rem;
 }
-
 .profileInfoValue{
   font-size: 1.2rem;
 }
@@ -552,5 +551,18 @@ padding-right: 15%;
   font-size: 12px;
   margin: auto;
 }
-
+.barberShopHeroContainer{
+  background-color: #a6bfce;
+}
 /* -- profile info section */
+
+
+
+/* barberShop */
+
+.barberShopImage{
+  border-radius: 10px;
+  width: 100%;
+}
+
+/* -- barberShop */
