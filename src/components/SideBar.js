@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Image, Offcanvas, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Col, Offcanvas, Row } from "react-bootstrap";
 import NavItem from "./NavItem";
 import Profile from "./Profile";
 
@@ -86,7 +85,7 @@ function SideBar() {
             <Offcanvas.Title>به سینوا خوش آمدید</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
-            <Profile />
+            <Profile setShow={setShow} />
 
             <Row>
               <Col className="defaultContainer mt-2">
