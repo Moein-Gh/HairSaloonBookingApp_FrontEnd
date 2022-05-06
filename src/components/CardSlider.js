@@ -46,9 +46,9 @@ export default function CardSlider({ items: shops, title }) {
             modules={[Autoplay, Pagination]}
             className="mySwiper"
           >
-            {shops.map((item) => {
+            {shops.map((item, index) => {
               return (
-                <SwiperSlide>
+                <SwiperSlide key={index}>
                   <ShopCard shop={item} />
                 </SwiperSlide>
               );

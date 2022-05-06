@@ -85,7 +85,7 @@ export default function BarberSlider() {
             {barbers.map((item) => {
               return (
                 <SwiperSlide key={item.id}>
-                  <BarberCard barber={item} />
+                  <BarberCard barber={item} key={item.id} />
                 </SwiperSlide>
               );
             })}

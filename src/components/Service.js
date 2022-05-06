@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Service = ({ service }) => {
   return (
     <Row className="serviceItem">
-      <Col xs={8} className="serviceTitleContainer">
+      <Col xs={7} className="serviceTitleContainer">
         <div>
           <h6 className="serviceTitleText">{service.title}</h6>
         </div>
@@ -22,6 +22,9 @@ const Service = ({ service }) => {
             {service.price.toLocaleString()} تومان
           </h6>
         </div>
+      </Col>
+      <Col xs={1}>
+        <button className="btn">افزودن</button>
       </Col>
     </Row>
   );

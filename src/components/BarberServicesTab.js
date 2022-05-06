@@ -32,55 +32,55 @@ const categories = [
         title: "اصلاح بالای سر",
         duration: 15,
         price: 30000,
-        id: 1,
+        id: 4,
       },
       {
         title: "اصلاح کنار سر",
         duration: 20,
         price: 15000,
-        id: 2,
+        id: 5,
       },
       {
         title: "اصلاح سر کودک",
         duration: 25,
         price: 20000,
-        id: 3,
+        id: 6,
       },
       {
         title: "اصلاح بالای سر",
         duration: 15,
         price: 30000,
-        id: 1,
+        id: 7,
       },
       {
         title: "اصلاح کنار سر",
         duration: 20,
         price: 15000,
-        id: 2,
+        id: 8,
       },
       {
         title: "اصلاح سر کودک",
         duration: 25,
         price: 20000,
-        id: 3,
+        id: 9,
       },
       {
         title: "اصلاح بالای سر",
         duration: 15,
         price: 30000,
-        id: 1,
+        id: 10,
       },
       {
         title: "اصلاح کنار سر",
         duration: 20,
         price: 15000,
-        id: 2,
+        id: 11,
       },
       {
         title: "اصلاح سر کودک",
         duration: 25,
         price: 20000,
-        id: 3,
+        id: 12,
       },
     ],
   },
@@ -91,19 +91,19 @@ const categories = [
         title: "اصلاح کامل ریش",
         duration: 15,
         price: 30000,
-        id: 1,
+        id: 13,
       },
       {
         title: "اصلاح کنار سر",
         duration: 20,
         price: 15000,
-        id: 2,
+        id: 14,
       },
       {
         title: "اصلاح سر کودک",
         duration: 25,
         price: 20000,
-        id: 3,
+        id: 15,
       },
     ],
   },
@@ -114,19 +114,19 @@ const categories = [
         title: "اصلاح بالای سر",
         duration: 15,
         price: 30000,
-        id: 1,
+        id: 16,
       },
       {
         title: "اصلاح کنار سر",
         duration: 20,
         price: 15000,
-        id: 2,
+        id: 17,
       },
       {
         title: "اصلاح سر کودک",
         duration: 25,
         price: 20000,
-        id: 3,
+        id: 18,
       },
     ],
   },
@@ -145,7 +145,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <Typography component="div">{children}</Typography>
         </Box>
       )}
     </div>
@@ -183,15 +183,17 @@ export default function BarberServicesTab() {
           scrollButtons
         >
           {categories.map((category, index) => {
-            return <Tab label={category.title} {...a11yProps(index)} />;
+            return (
+              <Tab label={category.title} {...a11yProps(index)} key={index} />
+            );
           })}
         </Tabs>
       </Box>
       {categories.map((category, index) => {
         return (
-          <TabPanel value={value} index={index}>
+          <TabPanel value={value} index={index} key={index}>
             {category.services.map((service) => {
-              return <Service service={service} />;
+              return <Service service={service} key={service.id} />;
             })}
           </TabPanel>
         );

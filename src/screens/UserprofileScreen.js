@@ -19,7 +19,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <Typography component="div">{children}</Typography>
         </Box>
       )}
     </div>
@@ -54,7 +54,6 @@ export default function UserprofileScreen() {
           onChange={handleChange}
           aria-label="basic tabs example"
           centered
-          ScrollButtonComponent
           scrollButtons
         >
           <Tab label="اطلاعات شخصی" {...a11yProps(0)} />

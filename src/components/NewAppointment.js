@@ -1,131 +1,316 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
-import StepContent from "@mui/material/StepContent";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import MenuProfile from "./MenuProfile";
-import { Row } from "react-bootstrap";
-import { Col } from "react-bootstrap";
-import { Switch } from "@mui/material";
-import { FormControlLabel } from "@mui/material";
-import { Autocomplete } from "@mui/lab";
-import { TextField } from "@mui/material";
-
-const steps = ["انتخاب آرایشگاه", "انتخاب خدمات", "انتخاب زمان"];
-let favouriteBarberShops = [
-  { name: "ارایشگاه ۱", id: 1 },
-  { name: "ارایشگاه ۲", id: 2 },
-  { name: "ارایشگاه ۳", id: 3 },
-  { name: "ارایشگاه ۴", id: 4 },
-  { name: "ارایشگاه ۵", id: 5 },
-  { name: "ارایشگاه ۶", id: 6 },
-  { name: "ارایشگاه ۷", id: 7 },
+import { Steps, Button, message, Switch, Select } from "antd";
+import React, { useState } from "react";
+import "antd/dist/antd.css";
+import { Col, Row } from "react-bootstrap";
+import BarberServicesTab from "./BarberServicesTab";
+import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
+import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
+import { utils } from "@hassanmojab/react-modern-calendar-datepicker";
+const { Option } = Select;
+const { Step } = Steps;
+let services = [
+  {
+    title: "اصلاح بالای سر",
+    duration: 15,
+    price: 30000,
+    id: 1,
+  },
+  {
+    title: "اصلاح کنار سر",
+    duration: 20,
+    price: 15000,
+    id: 2,
+  },
+  {
+    title: "اصلاح سر کودک",
+    duration: 25,
+    price: 20000,
+    id: 3,
+  },
+  {
+    title: "اصلاح بالای سر",
+    duration: 15,
+    price: 30000,
+    id: 4,
+  },
+  {
+    title: "اصلاح کنار سر",
+    duration: 20,
+    price: 15000,
+    id: 5,
+  },
 ];
+const getPriceSum = (services) => {
+  let sum = 0;
+  services.forEach((service) => {
+    sum = sum + service.price;
+  });
+  return sum;
+};
+const getDurationSum = (services) => {
+  let sum = 0;
+  services.forEach((service) => {
+    sum = sum + service.duration;
+  });
+  return sum;
+};
 
-export default function HorizontalLinearStepper() {
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [skipped, setSkipped] = React.useState(new Set());
-  const [favourite, setFavourite] = React.useState(true);
+const defaultValue = utils("fa").getToday();
 
-  const handleChange = (event) => {
-    setFavourite(event.target.checked);
-  };
+const NewAppointment = () => {
+  const [current, setCurrent] = useState(0);
+  const [selectedDay, setSelectedDay] = useState(defaultValue);
+  const [favBarberShop, setFavBarberShop] = useState(true);
 
-  const handleNext = () => {
-    let newSkipped = skipped;
+  function onSwitchChange(checked) {
+    setFavBarberShop(checked);
+  }
 
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
-  };
+  function onChange(value) {
+    console.log(`selected ${value}`);
+  }
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+  let favForm = (
+    <>
+      <Row>
+        <Col>
+          <Row className="selectFormContainer">
+            {" "}
+            <Select
+              className="selectForm"
+              showSearch
+              placeholder="نام آرایشگاه را انتخاب کنید"
+              optionFilterProp="children"
+              onChange={onChange}
+              filterOption={(input, option) =>
+                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+              }
+            >
+              <Option value="0">هیچکدام</Option>
+              <Option value="jack">Jack</Option>
+              <Option value="lucy">Lucy</Option>
+              <Option value="tom">Tom</Option>
+            </Select>
+          </Row>
 
-  const handleReset = () => {
-    setActiveStep(0);
-  };
-
-  let favouriteForm = (
-    <Row>
-      <Col md={6}>
-        <Autocomplete
-          disablePortal
-          getOptionLabel={(option) => option.name || ""}
-          id="combo-box-demo"
-          options={favouriteBarberShops}
-          sx={{ width: 300 }}
-          renderInput={(params) => <TextField {...params} label="آرایشگاه" />}
-        />
-      </Col>
-      <Col md={6}></Col>
-    </Row>
+          <Row className="selectFormContainer">
+            {" "}
+            <Select
+              className="selectForm"
+              showSearch
+              placeholder="نام آرایشگر را انتخاب کنید"
+              optionFilterProp="children"
+              onChange={onChange}
+              filterOption={(input, option) =>
+                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+              }
+            >
+              <Option value="0">هیچکدام</Option>
+              <Option value="jack">Jack</Option>
+              <Option value="lucy">Lucy</Option>
+              <Option value="tom">Tom</Option>
+            </Select>
+          </Row>
+        </Col>
+      </Row>
+    </>
   );
-  let regularForm = <h3>sdssf</h3>;
+
+  let barberShopForm = (
+    <>
+      <Row>
+        <Col>
+          <Row className="selectFormContainer">
+            {" "}
+            <Select
+              className="selectForm"
+              showSearch
+              placeholder="نام آرایشگاه را انتخاب کنید"
+              optionFilterProp="children"
+              onChange={onChange}
+              filterOption={(input, option) =>
+                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+              }
+            >
+              <Option value="0">هیچکدام</Option>
+              <Option value="jack">Jack</Option>
+              <Option value="lucy">Lucy</Option>
+              <Option value="tom">Tom</Option>
+            </Select>
+          </Row>
+
+          <Row className="selectFormContainer">
+            {" "}
+            <Select
+              className="selectForm"
+              showSearch
+              placeholder="نام آرایشگر را انتخاب کنید"
+              optionFilterProp="children"
+              onChange={onChange}
+              filterOption={(input, option) =>
+                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+              }
+            >
+              <Option value="0">هیچکدام</Option>
+              <Option value="jack">Jack</Option>
+              <Option value="lucy">Lucy</Option>
+              <Option value="tom">Tom</Option>
+            </Select>
+          </Row>
+        </Col>
+      </Row>
+    </>
+  );
+
+  const steps = [
+    {
+      title: "انتخاب آرایشگاه",
+      content: (
+        <Row className="formContainer">
+          <Row className="my-2">
+            <Col>
+              <Switch defaultChecked onChange={onSwitchChange} />
+              <label htmlFor="switch">
+                &nbsp; انتخاب از بین آرایشگاه های موردعلاقه
+              </label>
+            </Col>
+          </Row>
+          <h5 className="mt-3">لطفا آرایشگاه و آرایشگر خود را انتخاب کنید</h5>
+          {favBarberShop ? favForm : barberShopForm}
+        </Row>
+      ),
+    },
+    {
+      title: "انتخاب خدمات",
+      content: (
+        <>
+          <Row className="defaultContainer">
+            <Col>
+              <Row>
+                <Col xs={8}>
+                  <h5>خدمات انتخاب شده</h5>
+                  {services.map((service) => {
+                    return <h6 key={service.id}>{service.title}</h6>;
+                  })}
+                </Col>
+                <Col xs={2}>
+                  <h5>مدت زمان</h5>
+                  {services.map((service) => {
+                    return <h6 key={service.id}>{service.duration}</h6>;
+                  })}
+                </Col>
+                <Col xs={2}>
+                  <h5>مبلغ</h5>
+                  {services.map((service) => {
+                    return (
+                      <h6 key={service.id}>
+                        {service.price.toLocaleString()} تومان
+                      </h6>
+                    );
+                  })}
+                </Col>
+              </Row>
+              <hr />
+              <Row>
+                <Col xs={8}>
+                  <h5>مجموع</h5>
+                </Col>
+                <Col xs={2}>
+                  <h5>{getDurationSum(services)}</h5>
+                </Col>
+                <Col xs={2}>
+                  <h5>{getPriceSum(services).toLocaleString()} تومان</h5>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+          <Row className="defaultContainer">
+            <Row id="services" className=" mt-3">
+              <BarberServicesTab />
+            </Row>
+          </Row>
+        </>
+      ),
+    },
+    {
+      title: "انتخاب زمان",
+      content: (
+        <>
+          <Row></Row>
+          <DatePicker
+            value={selectedDay}
+            placeholder="sdf"
+            onChange={setSelectedDay}
+            shouldHighlightWeekends
+            locale="fa"
+            renderFooter={() => (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  padding: "1rem 2rem",
+                }}
+              >
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedDay(null);
+                  }}
+                  className="btn"
+                >
+                  پاک کردن
+                </button>
+              </div>
+            )}
+          />
+        </>
+      ),
+    },
+    {
+      title: "ثبت نوبت",
+      content: "Last-content",
+    },
+  ];
+
+  const next = () => {
+    setCurrent(current + 1);
+  };
+
+  const prev = () => {
+    setCurrent(current - 1);
+  };
 
   return (
-    <Box sx={{ width: "100%" }} className="defaultContainer">
-      <Stepper activeStep={activeStep}>
-        {steps.map((label, index) => {
-          const stepProps = {};
-          const labelProps = {};
-
-          return (
-            <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}>&nbsp;&nbsp;{label}</StepLabel>
-            </Step>
-          );
-        })}
-      </Stepper>
-      {activeStep === steps.length ? (
-        <React.Fragment>
-          <Typography sx={{ mt: 2, mb: 1 }}>
-            درخواست شما به آرایشگر فرستاده شد. پس از تایید ایشان نوبت شما در
-            سامانه ثبت خواهد شد
-          </Typography>
-          <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-            <Box sx={{ flex: "1 1 auto" }} />
-            <Button onClick={handleReset}>شروع مجدد</Button>
-          </Box>
-        </React.Fragment>
-      ) : (
-        <React.Fragment>
-          {activeStep === 0 && (
-            <Row className="defaultContainer">
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={favourite}
-                    onChange={handleChange}
-                    name="favourite"
-                  />
-                }
-                label="انتخاب از بین آرایشگاه های موردعلاقه"
-              />
-              {favourite ? favouriteForm : regularForm}
-            </Row>
-          )}
-
-          <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-            <Button
-              color="inherit"
-              disabled={activeStep === 0}
-              onClick={handleBack}
-              sx={{ mr: 1 }}
-            >
-              مرحله قبل
-            </Button>
-            <Box sx={{ flex: "1 1 auto" }} />
-
-            <Button onClick={handleNext}>
-              {activeStep === steps.length - 1 ? "ثبت" : "مرحله بعد"}
-            </Button>
-          </Box>
-        </React.Fragment>
-      )}
-    </Box>
+    <Row className="defaultContainer">
+      <Steps current={current}>
+        {steps.map((item) => (
+          <Step key={item.title} title={item.title} />
+        ))}
+      </Steps>
+      <div className="steps-content">{steps[current].content}</div>
+      <div className="steps-action mt-5">
+        {current < steps.length - 1 && (
+          <Button type="primary" onClick={() => next()}>
+            بعدی
+          </Button>
+        )}
+        {current === steps.length - 1 && (
+          <Button
+            type="primary"
+            onClick={() =>
+              message.success("درخواست شما با موفقیت به آرایشگر فرستاده شد")
+            }
+          >
+            ثبت درخواست
+          </Button>
+        )}
+        {current > 0 && (
+          <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
+            قبلی
+          </Button>
+        )}
+      </div>
+    </Row>
   );
-}
+};
+export default NewAppointment;

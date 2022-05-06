@@ -44,17 +44,15 @@ h1 {
   color: black;
 }
 .btn:hover {
-  transform: scale(1.01 );
+  transform: scale(1.05 );
   transition: transform 0.1s ease-in-out;
 }
-.btn:active {
-  transform: scale(1);
-  outline: none !important;
-  box-shadow: none !important;
-}
+
 .btn:focus {
+  transform: scale(0.98);
+  transition: transform 0.1s ease-in-out;
   outline: none !important;
-  box-shadow: none !important;
+  box-shadow: var(--shadow);
 }
 
 .topLeftAbsoluteButton {
@@ -105,6 +103,7 @@ body {
   box-sizing: border-box;
   font-family: 'Vazir-Medium-FD' !important;
   user-select: none;
+  direction: rtl;
 }
 *:hover,
 *:focus {
@@ -597,3 +596,47 @@ padding: 0;
 }
 
 /* -- Service */
+
+
+.ant-steps-item-icon, .ant-steps-item-content{  overflow: hidden !important;
+
+}
+
+
+/* form */
+
+.formContainer{
+  background-color: lavender;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.selectFormContainer{
+  margin: 1rem;
+}
+.ant-select-selector {
+  height: 50px !important;
+}
+.ant-select-selection-search-input{
+  height: 100% !important;
+    vertical-align: middle !important;
+    padding-right: 10px !important;
+}
+
+.ant-select-selection-placeholder{
+  height: 100% !important;
+    padding-right: 24px !important;
+    padding-top: 10px !important;
+    color: #65737a !important;
+}
+
+.ant-select-selection-item{
+  height: 100% !important;
+    padding-right: 24px !important;
+    padding-top: 10px !important;
+}
+
+
+/* -- form */
