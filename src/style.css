@@ -86,7 +86,7 @@ li {
 .defaultContainer {
   background-color: white;
   padding: 2rem;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: var(--shadow);
 }
 
@@ -559,10 +559,41 @@ padding-right: 15%;
 
 
 /* barberShop */
-
+.barberSliderTab .css-19kzrtu{
+padding: 0;
+}
 .barberShopImage{
   border-radius: 10px;
   width: 100%;
 }
-
+.barberCardImageContainer{
+  margin-bottom: 1rem;
+}
+.barberImage{
+  width: 80%;
+  border-radius: 50%;
+  box-shadow: rgb(158 209 194) 0px 0px 0px 5px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: top center;
+}
+.cardSliderContainer{
+  padding: 0 0 ;
+}
+.cardSliderContainer .swiper{
+  padding-top: 1rem !important;
+  padding-bottom: 3rem !important;
+}
 /* -- barberShop */
+
+
+/* Service */
+
+.serviceItem{
+  padding: 1rem;
+  margin: 0.5rem 0rem;
+  border-radius: 5px;
+  background-color: #9aa9c9a3;
+}
+
+/* -- Service */

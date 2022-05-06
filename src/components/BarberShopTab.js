@@ -4,7 +4,8 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import ProfileInfo from "../components/ProfileInfo";
+import ProfileInfo from "./ProfileInfo";
+import BarberSlider from "./BarberSlider";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -39,7 +40,7 @@ function a11yProps(index) {
   };
 }
 
-export default function BarberShopServices() {
+export default function BarberShopTab() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -54,20 +55,19 @@ export default function BarberShopServices() {
           onChange={handleChange}
           aria-label="basic tabs example"
           centered
-          ScrollButtonComponent
           scrollButtons
         >
-          <Tab label="اطلاعات شخصی" {...a11yProps(0)} />
+          <Tab label="آرایشگران" {...a11yProps(0)} />
 
-          <Tab label="الگو ها" {...a11yProps(1)} />
+          <Tab label="گالری" {...a11yProps(1)} />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
-        <ProfileInfo />
+      <TabPanel value={value} index={0} className="barberSliderTab">
+        <BarberSlider />
       </TabPanel>
 
       <TabPanel value={value} index={1}>
-        Item Three
+        <h5>محتوایی جهت نمایش وجود ندارد</h5>
       </TabPanel>
     </Box>
   );
