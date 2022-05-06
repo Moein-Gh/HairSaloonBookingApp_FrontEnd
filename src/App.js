@@ -8,9 +8,7 @@ import { Col, Row } from "react-bootstrap";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import BarberShopScreen from "./screens/BarberShopScreen";
-import BarberDashboard from "./screens/BarberDashboard";
 import UserprofileScreen from "./screens/UserprofileScreen";
-import BookingScreen from "./screens/BookingScreen";
 import NewAppointmentScreen from "./screens/NewAppointmentScreen";
 function App() {
   return (

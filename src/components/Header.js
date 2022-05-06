@@ -1,26 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Col, Image, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import SideBar from "./SideBar";
-const logo = require("../logo.png");
-
 const Header = () => {
   return (
     <>
       <header>
         <Row className="headerContainer">
-          <Col xs={1} className="text-align-center">
+          <Col xs={2} className="flex-center text-align-center">
             <SideBar />
           </Col>
-          <Col xs={9} className="headerMiddle text-align-center">
-            به سینوا خوش آمدید
+          <Col xs={8} className="flex-center headerMiddle text-align-center">
+            <h1>سینوا</h1>
+            <Link to={"/"} className="headerLink">
+              <h1>سینوا</h1>
+            </Link>
           </Col>
-          <Col xs={1} className="text-align-center">
-            <Image src="" />
+          <Col xs={2} className="flex-center text-align-center">
+            <Link to={"/"}>
+              <Image src="/icons/logo.png" className="logo" />
+            </Link>
           </Col>
         </Row>
       </header>
     </>
   );
 };
-
 export default Header;
