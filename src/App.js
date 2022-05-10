@@ -10,6 +10,10 @@ import Footer from "./components/Footer";
 import BarberShopScreen from "./screens/BarberShopScreen";
 import UserprofileScreen from "./screens/UserprofileScreen";
 import NewAppointmentScreen from "./screens/NewAppointmentScreen";
+import ScrollToTop from "./components/ScrollToTop";
+import AllAppointment from "./screens/AllAppointment";
+import BarberShops from "./screens/BarberShops";
+
 function App() {
   return (
     <Router>
@@ -19,6 +23,7 @@ function App() {
             <Header />
             <div className="mainColumn">
               <Col>
+                <ScrollToTop />
                 <Routes>
                   <Route path="/" exact element={<HomeScreen />} />
                   <Route
@@ -32,10 +37,16 @@ function App() {
                     element={<NewAppointmentScreen />}
                   />
                   <Route
+                    path="/allAppointments"
+                    exact
+                    element={<AllAppointment />}
+                  />
+                  <Route
                     path="/UserprofileScreen"
                     exact
                     element={<UserprofileScreen />}
                   />
+                  <Route path="/:category" exact element={<BarberShops />} />
                 </Routes>
               </Col>
             </div>

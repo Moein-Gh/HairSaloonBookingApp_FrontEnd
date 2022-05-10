@@ -95,7 +95,7 @@ li {
 /* Page */
 body {
   margin: 0;
-  background-color: var(--light-blue);
+  background-color: var(--light-blue) !important;
 }
 *,
 *::before,
@@ -462,6 +462,8 @@ margin-bottom: 1rem;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
   border-radius: 20px;
   width: 100%;
+  text-align: center;
+  margin-top: 2rem;
 }
 
 .shopCardImage {
@@ -638,5 +640,35 @@ padding: 0;
     padding-top: 10px !important;
 }
 
-
+.datePickerContainer{
+  display: flex;
+  flex-direction: row;
+}
 /* -- form */
+
+/* time option */
+
+.timeOptionContainer{
+  border-radius: 10px;
+  background-color: #c5cae9;
+  padding: 1rem;
+  margin: 3px;
+}
+
+/* -- time option */
+
+
+/* barbershops  */
+.barbershopTitle{
+  text-align: center;
+  padding: 1rem;
+}
+.shopCardGrid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 50px;
+}
+
+/* --barbershops  */
+

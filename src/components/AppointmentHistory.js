@@ -36,7 +36,7 @@ const AppointmentHistory = () => {
       <Col className="defaultContainer h-100">
         <div className="flex-center position-relative">
           <h4 className="">نوبت های قبلی</h4>
-          <Link to={"/"} className="topLeftAbsoluteButton">
+          <Link to={"/allAppointments"} className="topLeftAbsoluteButton">
             <button className="btn">مشاهده همه</button>
           </Link>
         </div>

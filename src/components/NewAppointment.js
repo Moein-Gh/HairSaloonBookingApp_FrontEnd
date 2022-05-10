@@ -1,13 +1,25 @@
 import { Steps, Button, message, Switch, Select } from "antd";
 import React, { useState } from "react";
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import { Col, Row } from "react-bootstrap";
 import BarberServicesTab from "./BarberServicesTab";
 import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
 import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
 import { utils } from "@hassanmojab/react-modern-calendar-datepicker";
+import TimeOption from "./TimeOption";
+import { Radio } from "antd";
+import { Space } from "antd";
+const times = [
+  { startClock: 12, endClock: 13 },
+  { startClock: 13, endClock: 14 },
+  { startClock: 16, endClock: 17 },
+  { startClock: 19, endClock: 20 },
+];
+
 const { Option } = Select;
+
 const { Step } = Steps;
+
 let services = [
   {
     title: "اصلاح بالای سر",
@@ -40,6 +52,7 @@ let services = [
     id: 5,
   },
 ];
+
 const getPriceSum = (services) => {
   let sum = 0;
   services.forEach((service) => {
@@ -47,6 +60,7 @@ const getPriceSum = (services) => {
   });
   return sum;
 };
+
 const getDurationSum = (services) => {
   let sum = 0;
   services.forEach((service) => {
@@ -61,6 +75,11 @@ const NewAppointment = () => {
   const [current, setCurrent] = useState(0);
   const [selectedDay, setSelectedDay] = useState(defaultValue);
   const [favBarberShop, setFavBarberShop] = useState(true);
+  const [value, setValue] = useState(true);
+
+  const radioOnChange = (e) => {
+    setValue(e.target.value);
+  };
 
   function onSwitchChange(checked) {
     setFavBarberShop(checked);
@@ -236,39 +255,61 @@ const NewAppointment = () => {
       title: "انتخاب زمان",
       content: (
         <>
-          <Row></Row>
-          <DatePicker
-            value={selectedDay}
-            placeholder="sdf"
-            onChange={setSelectedDay}
-            shouldHighlightWeekends
-            locale="fa"
-            renderFooter={() => (
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  padding: "1rem 2rem",
-                }}
-              >
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSelectedDay(null);
-                  }}
-                  className="btn"
-                >
-                  پاک کردن
-                </button>
-              </div>
-            )}
-          />
+          <Row className="defaultContainer mt-4">
+            <Col className="datePickerContainer mx-4">
+              <h4>انتخاب روز نوبت</h4>
+              <DatePicker
+                value={selectedDay}
+                placeholder="sdf"
+                onChange={setSelectedDay}
+                shouldHighlightWeekends
+                locale="fa"
+                renderFooter={() => (
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      padding: "1rem 2rem",
+                    }}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSelectedDay(null);
+                      }}
+                      className="btn"
+                    >
+                      پاک کردن
+                    </button>
+                  </div>
+                )}
+              />
+            </Col>
+          </Row>
+          <Row className="defaultContainer mt-4">
+            <h5>زمان های موجود</h5>
+            <Radio.Group
+              onChange={(e) => {
+                radioOnChange(e);
+              }}
+              value={value}
+            >
+              <Space direction="vertical">
+                {times.map((time, index) => {
+                  return (
+                    <Radio key={Math.random()} value={index}>
+                      {time.startClock + "-" + time.endClock}
+                    </Radio>
+                  );
+                })}
+              </Space>
+            </Radio.Group>
+          </Row>
         </>
       ),
     },
     {
       title: "ثبت نوبت",
-      content: "Last-content",
     },
   ];
 

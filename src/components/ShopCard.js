@@ -39,7 +39,7 @@ const ShopCard = ({ shop }) => {
             </Link>
           </Col>
           <Col xs={6}>
-            <Link to={"/"} className="shopCardButton">
+            <Link to={"/barberShop"} className="shopCardButton">
               <button className="btn">اطلاعات بیشتر</button>
             </Link>
           </Col>
