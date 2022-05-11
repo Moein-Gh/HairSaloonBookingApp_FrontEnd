@@ -1,12 +1,7 @@
 import React from "react";
-import Appointments from "../components/Appointments";
 
-const UserprofileScreen = () => {
-  return (
-    <>
-      <Appointments />
-    </>
-  );
+const UserProfileScreen = () => {
+  return <>UserProfileScreen</>;
 };
 
-export default UserprofileScreen;
+export default UserProfileScreen;
