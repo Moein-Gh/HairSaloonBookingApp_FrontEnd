@@ -8,9 +8,12 @@ import { Col, Row } from "react-bootstrap";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import BarberShopScreen from "./screens/BarberShopScreen";
-import BarberDashboard from "./screens/BarberDashboard";
 import UserprofileScreen from "./screens/UserprofileScreen";
-import BookingScreen from "./screens/BookingScreen";
+import NewAppointmentScreen from "./screens/NewAppointmentScreen";
+import ScrollToTop from "./components/ScrollToTop";
+import AllAppointment from "./screens/AllAppointment";
+import BarberShops from "./screens/BarberShops";
+
 function App() {
   return (
     <Router>
@@ -20,6 +23,7 @@ function App() {
             <Header />
             <div className="mainColumn">
               <Col>
+                <ScrollToTop />
                 <Routes>
                   <Route path="/" exact element={<HomeScreen />} />
                   <Route
@@ -30,13 +34,19 @@ function App() {
                   <Route
                     path="/bookingScreen"
                     exact
-                    element={<BookingScreen />}
+                    element={<NewAppointmentScreen />}
+                  />
+                  <Route
+                    path="/allAppointments"
+                    exact
+                    element={<AllAppointment />}
                   />
                   <Route
                     path="/UserprofileScreen"
                     exact
                     element={<UserprofileScreen />}
                   />
+                  <Route path="/:category" exact element={<BarberShops />} />
                 </Routes>
               </Col>
             </div>

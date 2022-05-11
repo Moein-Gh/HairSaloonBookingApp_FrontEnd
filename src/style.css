@@ -11,7 +11,10 @@
   --active-text: #ff9a3c;
   --header-height: 40px;
   --page-height: 100vh - 4rem;
-  --shadow: rgba(0, 0, 0, 0.24) 0px a3px 8px;
+  --shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.ltr{
+  direction: ltr;
 }
 
 h1 {
@@ -33,25 +36,23 @@ h1 {
 }
 .btn {
   border-radius: 5px;
-  border: 1px solid black;
+  background-color: #d2e9e1;
   box-shadow: var(--shadow);
-  background-color: white;
-  padding: 7px 5حط;
+  padding: 7px 5px;
   margin: 5px 0px;
   transition: transform 0.1s ease-in-out;
   color: black;
 }
 .btn:hover {
-  transform: scale(1.02);
+  transform: scale(1.05 );
+  transition: transform 0.1s ease-in-out;
 }
-.btn:active {
-  transform: scale(1);
-  outline: none !important;
-  box-shadow: var(--shadow) !important;
-}
+
 .btn:focus {
+  transform: scale(0.98);
+  transition: transform 0.1s ease-in-out;
   outline: none !important;
-  box-shadow: var(--shadow) !important;
+  box-shadow: var(--shadow);
 }
 
 .topLeftAbsoluteButton {
@@ -83,7 +84,7 @@ li {
 .defaultContainer {
   background-color: white;
   padding: 2rem;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: var(--shadow);
 }
 
@@ -94,7 +95,7 @@ li {
 /* Page */
 body {
   margin: 0;
-  background-color: var(--light-blue);
+  background-color: var(--light-blue) !important;
 }
 *,
 *::before,
@@ -102,6 +103,7 @@ body {
   box-sizing: border-box;
   font-family: 'Vazir-Medium-FD' !important;
   user-select: none;
+  direction: rtl;
 }
 *:hover,
 *:focus {
@@ -190,11 +192,12 @@ header {
   flex-direction: column;
 }
 
-.profileImageContainer {
+.menuProfileImageContainer {
   text-align: center;
 }
-.menuProfileImage {
-  width: 100px;
+
+.menuProfileImage{
+  width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
   border-radius: 50%;
@@ -222,10 +225,10 @@ header {
 .menuRightsText {
   font-size: 10px;
 }
-.profileImageContainer h4 {
+.menuProfileprofileImageContainer h4 {
   margin-bottom: 0 !important;
 }
-.profileInfoContainer {
+.menuProfileInfoContainer {
   text-align: center;
 }
 
@@ -447,18 +450,20 @@ hr {
 /* -- Footer */
 
 /* shopCard */
+.cardSliderTextContainer{
+margin-bottom: 1rem;
+}
 .cardSliderContainer {
   border-radius: 10px;
-  margin-top: 10px;
   padding: 0rem 1rem 0rem 1rem;
-  background-color: #f1f7e7;
+
 }
 .shopCardContainer {
-  background-color: white;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
   border-radius: 20px;
   width: 100%;
+  text-align: center;
+  margin-top: 2rem;
 }
 
 .shopCardImage {
@@ -467,14 +472,203 @@ hr {
   width: 90%;
   aspect-ratio: 1.6;
   margin: auto;
-  background-size: cover;
+  background-size: cover; 
+  background-position: center;
+  position: relative;
   box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+.imageTag{
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  background-color: var(--gold);
+  padding: 4px;
+  color: #0f4668;
+  border-radius: 5px;
+}
+.imageTag h6{
+  font-size: 14px;
+  margin-bottom: 0;
 }
 .swiper {
   padding-top: 3rem !important;
   padding-bottom: 2.5rem !important;
+  padding-left: 3px !important;
+  padding-right: 3px !important;
   overflow: none !important;
   overflow-x: hidden !important;
 }
-
+.shopCardButton .btn{
+  width: 80%;
+  padding: 4px;
+  font-size: 12px;
+}
+.shopCardHr{
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  height: 1.5px !important;
+  color: #0f4668;
+  
+}
 /* -- shopCard */
+
+
+
+
+/* profile info section */
+
+.profileImageContainer{
+  width: 70%;
+  margin: auto;
+}
+.profileImage{
+border-radius: 10px;
+box-shadow: rgb(158 209 194) 0px 0px 0px 5px;
+}
+
+
+.profileInfoRow{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.profileUserDataContainer{
+padding-right: 15%;
+}
+.profileInfoKey{
+  font-size: 1.4rem;
+}
+.profileInfoValue{
+  font-size: 1.2rem;
+}
+.profileUserDataButtonContainer{
+  align-items: center;
+}
+.profileUserDataButton .btn{
+  width: 80%;
+  padding: 4px;
+  font-size: 12px;
+  margin: auto;
+}
+.barberShopHeroContainer{
+  background-color: #a6bfce;
+}
+/* -- profile info section */
+
+
+
+/* barberShop */
+.barberSliderTab .css-19kzrtu{
+padding: 0;
+}
+.barberShopImage{
+  border-radius: 10px;
+  width: 100%;
+}
+.barberCardImageContainer{
+  margin-bottom: 1rem;
+}
+.barberImage{
+  width: 80%;
+  border-radius: 50%;
+  box-shadow: rgb(158 209 194) 0px 0px 0px 5px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: top center;
+}
+.cardSliderContainer{
+  padding: 0 0 ;
+}
+.cardSliderContainer .swiper{
+  padding-top: 1rem !important;
+  padding-bottom: 3rem !important;
+}
+/* -- barberShop */
+
+
+/* Service */
+
+.serviceItem{
+  padding: 1rem;
+  margin: 0.5rem 0rem;
+  border-radius: 5px;
+  background-color: #9aa9c9a3;
+}
+
+/* -- Service */
+
+
+.ant-steps-item-icon, .ant-steps-item-content{  overflow: hidden !important;
+
+}
+
+
+/* form */
+
+.formContainer{
+  background-color: lavender;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.selectFormContainer{
+  margin: 1rem;
+}
+.ant-select-selector {
+  height: 50px !important;
+}
+.ant-select-selection-search-input{
+  height: 100% !important;
+    vertical-align: middle !important;
+    padding-right: 10px !important;
+}
+
+.ant-select-selection-placeholder{
+  height: 100% !important;
+    padding-right: 24px !important;
+    padding-top: 10px !important;
+    color: #65737a !important;
+}
+
+.ant-select-selection-item{
+  height: 100% !important;
+    padding-right: 24px !important;
+    padding-top: 10px !important;
+}
+
+.datePickerContainer{
+  display: flex;
+  flex-direction: row;
+}
+/* -- form */
+
+/* time option */
+
+.timeOptionContainer{
+  border-radius: 10px;
+  background-color: #c5cae9;
+  padding: 1rem;
+  margin: 3px;
+}
+
+/* -- time option */
+
+
+/* barbershops  */
+.barbershopTitle{
+  text-align: center;
+  padding: 1rem;
+}
+.shopCardGrid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 50px;
+}
+
+/* --barbershops  */
+

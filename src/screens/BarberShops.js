@@ -1,7 +1,7 @@
 import React from "react";
-import CardSlider from "../components/CardSlider";
-import Categories from "../components/Categories";
-import Hero from "../components/Hero";
+import { Row } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import ShopCard from "../components/ShopCard";
 let shops = [
   {
     name: "سام راد",
@@ -46,16 +46,35 @@ let shops = [
     location: "یافت آباد",
   },
 ];
-const HomeScreen = () => {
+
+let barberShopCategories = [
+  { english: "men", persian: "مخصوص آقایان" },
+  { english: "women", persian: "مخصوص آقایان" },
+  { english: "hairStyle", persian: "مخصوص آقایان" },
+  { english: "nail", persian: "مخصوص آقایان" },
+  { english: "nearest", persian: "مخصوص آقایان" },
+];
+const BarberShops = ({}) => {
+  let { category } = useParams();
   return (
-    <>
-      <Hero />
-      <Categories />
-      <CardSlider items={shops} title="مخصوص آقایان" />
-      <CardSlider items={shops} title="مخصوص بانوان" />
-      <CardSlider items={shops} title="نزدیکترین" />
-    </>
+    <Row className="defaultContainer">
+      <Row className="barbershopTitle">
+        <h4>
+          {
+            barberShopCategories.filter((item) => {
+              return category == item.english;
+            })[0].persian
+          }
+        </h4>
+      </Row>
+      <hr />
+      <div className="shopCardGrid">
+        {shops.map((shop) => {
+          return <ShopCard key={Math.random()} shop={shop} />;
+        })}
+      </div>
+    </Row>
   );
 };
 
-export default HomeScreen;
+export default BarberShops;
