@@ -13,7 +13,7 @@
   --page-height: 100vh - 4rem;
   --shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.ltr{
+.ltr {
   direction: ltr;
 }
 
@@ -44,7 +44,7 @@ h1 {
   color: black;
 }
 .btn:hover {
-  transform: scale(1.05 );
+  transform: scale(1.05);
   transition: transform 0.1s ease-in-out;
 }
 
@@ -120,6 +120,7 @@ h4,
 h5,
 h6 {
   font-weight: 400 !important;
+  margin-bottom: 0 !important;
 }
 .pageContainer {
   min-height: 100vh;
@@ -196,7 +197,7 @@ header {
   text-align: center;
 }
 
-.menuProfileImage{
+.menuProfileImage {
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
@@ -450,16 +451,16 @@ hr {
 /* -- Footer */
 
 /* shopCard */
-.cardSliderTextContainer{
-margin-bottom: 1rem;
+.cardSliderTextContainer {
+  margin-bottom: 1rem;
 }
 .cardSliderContainer {
   border-radius: 10px;
   padding: 0rem 1rem 0rem 1rem;
-
 }
 .shopCardContainer {
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
   border-radius: 20px;
   width: 100%;
   text-align: center;
@@ -472,12 +473,12 @@ margin-bottom: 1rem;
   width: 90%;
   aspect-ratio: 1.6;
   margin: auto;
-  background-size: cover; 
+  background-size: cover;
   background-position: center;
   position: relative;
   box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
 }
-.imageTag{
+.imageTag {
   position: absolute;
   top: 5%;
   left: 5%;
@@ -486,7 +487,7 @@ margin-bottom: 1rem;
   color: #0f4668;
   border-radius: 5px;
 }
-.imageTag h6{
+.imageTag h6 {
   font-size: 14px;
   margin-bottom: 0;
 }
@@ -498,79 +499,72 @@ margin-bottom: 1rem;
   overflow: none !important;
   overflow-x: hidden !important;
 }
-.shopCardButton .btn{
+.shopCardButton .btn {
   width: 80%;
   padding: 4px;
   font-size: 12px;
 }
-.shopCardHr{
+.shopCardHr {
   margin-left: auto;
   margin-right: auto;
   width: 80%;
   height: 1.5px !important;
   color: #0f4668;
-  
 }
 /* -- shopCard */
 
-
-
-
 /* profile info section */
 
-.profileImageContainer{
+.profileImageContainer {
   width: 70%;
   margin: auto;
 }
-.profileImage{
-border-radius: 10px;
-box-shadow: rgb(158 209 194) 0px 0px 0px 5px;
+.profileImage {
+  border-radius: 10px;
+  box-shadow: rgb(158 209 194) 0px 0px 0px 5px;
 }
 
-
-.profileInfoRow{
+.profileInfoRow {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
 }
-.profileUserDataContainer{
-padding-right: 15%;
+.profileUserDataContainer {
+  padding-right: 15%;
 }
-.profileInfoKey{
+.profileInfoKey {
   font-size: 1.4rem;
 }
-.profileInfoValue{
+.profileInfoValue {
   font-size: 1.2rem;
 }
-.profileUserDataButtonContainer{
+.profileUserDataButtonContainer {
   align-items: center;
 }
-.profileUserDataButton .btn{
+.profileUserDataButton .btn {
   width: 80%;
   padding: 4px;
   font-size: 12px;
   margin: auto;
 }
-.barberShopHeroContainer{
+.barberShopHeroContainer {
   background-color: #a6bfce;
 }
 /* -- profile info section */
 
-
-
 /* barberShop */
-.barberSliderTab .css-19kzrtu{
-padding: 0;
+.barberSliderTab .css-19kzrtu {
+  padding: 0;
 }
-.barberShopImage{
+.barberShopImage {
   border-radius: 10px;
   width: 100%;
 }
-.barberCardImageContainer{
+.barberCardImageContainer {
   margin-bottom: 1rem;
 }
-.barberImage{
+.barberImage {
   width: 80%;
   border-radius: 50%;
   box-shadow: rgb(158 209 194) 0px 0px 0px 5px;
@@ -578,19 +572,18 @@ padding: 0;
   object-fit: cover;
   object-position: top center;
 }
-.cardSliderContainer{
-  padding: 0 0 ;
+.cardSliderContainer {
+  padding: 0 0;
 }
-.cardSliderContainer .swiper{
+.cardSliderContainer .swiper {
   padding-top: 1rem !important;
   padding-bottom: 3rem !important;
 }
 /* -- barberShop */
 
-
 /* Service */
 
-.serviceItem{
+.serviceItem {
   padding: 1rem;
   margin: 0.5rem 0rem;
   border-radius: 5px;
@@ -599,15 +592,14 @@ padding: 0;
 
 /* -- Service */
 
-
-.ant-steps-item-icon, .ant-steps-item-content{  overflow: hidden !important;
-
+.ant-steps-item-icon,
+.ant-steps-item-content {
+  overflow: hidden !important;
 }
-
 
 /* form */
 
-.formContainer{
+.formContainer {
   background-color: lavender;
   padding: 1rem;
   border-radius: 5px;
@@ -615,32 +607,32 @@ padding: 0;
   margin-bottom: 1rem;
 }
 
-.selectFormContainer{
+.selectFormContainer {
   margin: 1rem;
 }
 .ant-select-selector {
   height: 50px !important;
 }
-.ant-select-selection-search-input{
+.ant-select-selection-search-input {
   height: 100% !important;
-    vertical-align: middle !important;
-    padding-right: 10px !important;
+  vertical-align: middle !important;
+  padding-right: 10px !important;
 }
 
-.ant-select-selection-placeholder{
+.ant-select-selection-placeholder {
   height: 100% !important;
-    padding-right: 24px !important;
-    padding-top: 10px !important;
-    color: #65737a !important;
+  padding-right: 24px !important;
+  padding-top: 10px !important;
+  color: #65737a !important;
 }
 
-.ant-select-selection-item{
+.ant-select-selection-item {
   height: 100% !important;
-    padding-right: 24px !important;
-    padding-top: 10px !important;
+  padding-right: 24px !important;
+  padding-top: 10px !important;
 }
 
-.datePickerContainer{
+.datePickerContainer {
   display: flex;
   flex-direction: row;
 }
@@ -648,7 +640,7 @@ padding: 0;
 
 /* time option */
 
-.timeOptionContainer{
+.timeOptionContainer {
   border-radius: 10px;
   background-color: #c5cae9;
   padding: 1rem;
@@ -657,13 +649,12 @@ padding: 0;
 
 /* -- time option */
 
-
 /* barbershops  */
-.barbershopTitle{
+.barbershopTitle {
   text-align: center;
   padding: 1rem;
 }
-.shopCardGrid{
+.shopCardGrid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 30px;
@@ -672,3 +663,22 @@ padding: 0;
 
 /* --barbershops  */
 
+/* barber dashboard */
+
+.barberSalaryAppointment {
+  padding: 1rem;
+  border: 1px solid green;
+  border-radius: 10px;
+}
+
+.barberInfo {
+  width: fit-content;
+  background-color: white;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: auto;
+  font-size: 12px;
+}
+
+/* -- barber dashboard */
