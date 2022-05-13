@@ -1,14 +1,20 @@
 import React from "react";
 import { Col, Image, Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import SideBar from "./SideBar";
 const Header = () => {
+
+  const userLogin = useSelector((state) => {
+    return state.userLogin
+  })
+  const { loading, error, userInfo } = userLogin
   return (
     <>
       <header>
         <Row className="headerContainer">
           <Col xs={2} className="flex-center text-align-center">
-            <SideBar />
+            {userInfo&& <SideBar />}
           </Col>
           <Col xs={8} className="flex-center headerMiddle text-align-center">
             <Link to={"/"} className="headerLink">

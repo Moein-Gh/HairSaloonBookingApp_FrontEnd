@@ -4,9 +4,11 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import ProfileInfo from "../components/ProfileInfo";
+import BarberOverview from "../components/BarberOverview";
+import AppointmentHistory from "../components/AppointmentHistory";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import BarberManagement from "../components/BarberManagement";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -41,7 +43,7 @@ function a11yProps(index) {
   };
 }
 
-export default function UserprofileScreen() {
+export default function ManagerDashboardScreen() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -69,17 +71,27 @@ export default function UserprofileScreen() {
           centered
           scrollButtons
         >
-          <Tab label="اطلاعات شخصی" {...a11yProps(0)} />
+          <Tab label="داشبورد" {...a11yProps(0)} />
 
-          <Tab label="الگو ها" {...a11yProps(1)} />
+          <Tab label="آرایشگر ها" {...a11yProps(1)} />
+          <Tab label="نوبت ها" {...a11yProps(2)} />
+          <Tab label="خدمت ها" {...a11yProps(3)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <ProfileInfo />
+        <BarberOverview />
       </TabPanel>
 
       <TabPanel value={value} index={1}>
-        Item Three
+        <BarberManagement />
+      </TabPanel>
+
+      <TabPanel value={value} index={2}>
+        <AppointmentHistory />
+      </TabPanel>
+
+      <TabPanel value={value} index={3}>
+        services
       </TabPanel>
     </Box>
   );

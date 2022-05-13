@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Image } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import BarberServicesTab from "../components/BarberServicesTab";
 import BarberShopTab from "../components/BarberShopTab";
 let image = "./images/3.jpg";
@@ -10,6 +12,16 @@ let address = "یافت آباد - میدان الغدیر";
 let rating = 4;
 let phoneNumber = "۰۹۱۲۳۴۵۶۷۸۹";
 const BarberShopScreen = () => {
+  let navigate = useNavigate();
+
+  const userLogin = useSelector((state) => {
+    return state.userLogin;
+  });
+  const { loading, error, userInfo } = userLogin;
+
+  useEffect(() => {
+    if (!userInfo) navigate("/login");
+  }, [userInfo]);
   return (
     <>
       <Row className="defaultContainer">

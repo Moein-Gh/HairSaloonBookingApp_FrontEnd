@@ -1,0 +1,9 @@
+let port = `http://localhost:3001/booking/`
+export const auth = `${port}auth`
+export const user = `${port}users`
+export const facility = `${port}facilities`
+export const activity = `${port}activities`
+export const activityTemplate = `${port}ActivityTemplates`
+export const appointment = `${port}Appointments`
+export const file = `${port}files`
+export const category = `${port}categories`

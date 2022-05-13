@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import AllAppointmentHistory from "../components/AllAppointmentHistory";
 
 const AllAppointment = () => {
+  let navigate = useNavigate();
+
+  const userLogin = useSelector((state) => {
+    return state.userLogin;
+  });
+  const { loading, error, userInfo } = userLogin;
+
+  useEffect(() => {
+    if (!userInfo) navigate("/login");
+  }, [userInfo]);
   return (
     <>
       <Row className="defaultContainer text-align-center">
