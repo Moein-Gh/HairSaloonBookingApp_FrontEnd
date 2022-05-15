@@ -108,7 +108,7 @@ export const getMaleFacilities = () => async (dispatch, getState) => {
       },
     };
     const { data } = await axios.get(`${facility}/allMalefacilities`, config);
-    console.log(data);
+
     dispatch({
       type: MALE_FACILITY_LIST_SUCCESS,
       payload: data ? data : [],

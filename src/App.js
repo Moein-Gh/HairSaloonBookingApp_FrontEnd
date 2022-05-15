@@ -17,6 +17,7 @@ import BarberDashboard from "./screens/BarberDashboard";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import ManagerDashboardScreen from "./screens/ManagerDashboardScreen";
+import AddBarberScreen from "./screens/AddBarberScreen";
 
 function App() {
   return (
@@ -40,6 +41,11 @@ function App() {
                     path="/bookingScreen"
                     exact
                     element={<NewAppointmentScreen />}
+                  />
+                  <Route
+                    path="/addbarber"
+                    exact
+                    element={<AddBarberScreen />}
                   />
                   <Route
                     path="/allAppointments"
