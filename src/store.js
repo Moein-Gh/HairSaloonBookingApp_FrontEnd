@@ -8,6 +8,8 @@ import {
   usersNamesReducer,
   userRegisterReducer,
   normalUserListReducer,
+  addBarberReducer,
+  removeBarberReducer,
 } from "./reducers/userReducers";
 import {
   facilityDetailReducer,
@@ -29,6 +31,8 @@ const reducer = combineReducers({
   femaleFacilityList: femaleFacilityListReducer,
   facilityEmployees: facilityEmployeesReducer,
   normalUserList: normalUserListReducer,
+  addBarber: addBarberReducer,
+  removeBarber: removeBarberReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

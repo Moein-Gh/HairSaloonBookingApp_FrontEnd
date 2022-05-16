@@ -21,6 +21,12 @@ import {
   USER_REGISTER_FAIL,
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
+  ADD_BARBER_FAIL,
+  ADD_BARBER_REQUEST,
+  ADD_BARBER_SUCCESS,
+  REMOVE_BARBER_REQUEST,
+  REMOVE_BARBER_SUCCESS,
+  REMOVE_BARBER_FAIL,
 } from "../constants/userConstants";
 import axios from "axios";
 import { auth, user } from "../config";
@@ -199,6 +205,62 @@ export const createUser = (user) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: USER_CREATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const addBarber = (userId) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: ADD_BARBER_REQUEST });
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const { data } = await axios.patch(
+      `${user}/addBarber/${userId}`,
+      user,
+      config
+    );
+    dispatch({ type: ADD_BARBER_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: ADD_BARBER_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const removeBarber = (userId) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: REMOVE_BARBER_REQUEST });
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const { data } = await axios.patch(
+      `${user}/removebarber/${userId}`,
+      user,
+      config
+    );
+    dispatch({ type: REMOVE_BARBER_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: REMOVE_BARBER_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

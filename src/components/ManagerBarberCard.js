@@ -1,7 +1,10 @@
 import React from "react";
 import { Row, Col, Image } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import { removeBarber } from "../actions/userActions";
+import { REMOVE_BARBER_RESET } from "../constants/userConstants";
 
 let headerHeight;
 setTimeout(() => {
@@ -14,7 +17,16 @@ const scrollWidthOffset = (el, height) => {
 };
 
 const ManagerBarberCard = ({ barber }) => {
+  const dispatch = useDispatch();
   let image = barber.image;
+
+  const removeHandler = () => {
+    dispatch(removeBarber(barber._id));
+    setTimeout(() => {
+      // dispatch({ type: REMOVE_BARBER_RESET });
+    }, 200);
+  };
+
   return (
     <Col className="barberCardContainer">
       <Row className="barberCardImageContainer">
@@ -42,7 +54,9 @@ const ManagerBarberCard = ({ barber }) => {
               <button className="btn">مشاهده گزارش</button>
             </HashLink>
 
-            <button className="btn danger">حذف آرایشگر</button>
+            <button className="btn danger" onClick={removeHandler}>
+              حذف آرایشگر
+            </button>
           </Col>
         </Row>
       </Row>

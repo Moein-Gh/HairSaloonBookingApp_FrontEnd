@@ -5,7 +5,7 @@ import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message.js";
 import Loader from "../components/Loader.js";
-import { getNormalUsers } from "../actions/userActions";
+import { addBarber, getNormalUsers } from "../actions/userActions";
 import FormContainer from "../components/FormContainer.js";
 
 import React from "react";
@@ -17,10 +17,10 @@ const AddBarberScreen = () => {
   const { Option } = Select;
   const dispatch = useDispatch();
 
-  const userRegister = useSelector((state) => {
-    return state.userRegister;
+  const userLogin = useSelector((state) => {
+    return state.userLogin;
   });
-  const { loading, error, userInfo } = userRegister;
+  const { loading, error, userInfo } = userLogin;
 
   const normalUserList = useSelector((state) => {
     return state.normalUserList;
@@ -31,6 +31,16 @@ const AddBarberScreen = () => {
     users: normalUsers,
   } = normalUserList;
 
+  const addBarberState = useSelector((state) => {
+    return state.addBarber;
+  });
+  const {
+    loading: addBarberLoading,
+    error: addBarberError,
+    message: addBarberMessage,
+    reset: addBarberReset,
+  } = addBarberState;
+
   let navigate = useNavigate();
   useEffect(() => {
     if (!userInfo) {
@@ -38,11 +48,12 @@ const AddBarberScreen = () => {
     } else {
       dispatch(getNormalUsers());
     }
-  }, [dispatch]);
+  }, [dispatch, addBarberReset, userInfo, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(addBarber(userInfo.facilityId, barberId));
+    console.log(barberId);
+    dispatch(addBarber(barberId));
   };
 
   function onChange(value) {
@@ -61,28 +72,26 @@ const AddBarberScreen = () => {
         {error && <Message variant="danger">{error}</Message>}
         {loading && <Loader />}
         <Form onSubmit={submitHandler}>
-          {normalUsers && (
-            <Select
-              className="selectForm"
-              showSearch
-              placeholder="نام آرایشگر را انتخاب کنید"
-              optionFilterProp="children"
-              onChange={onChange}
-              filterOption={(input, option) =>
-                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-              }
-            >
-              <Option value="0">هیچکدام</Option>
-              {normalUsers &&
-                normalUsers.map((user) => {
-                  return (
-                    <Option value={user._id} key={user._id}>
-                      {user.name}
-                    </Option>
-                  );
-                })}
-            </Select>
-          )}
+          <Select
+            className="selectForm"
+            showSearch
+            placeholder="نام آرایشگر را انتخاب کنید"
+            optionFilterProp="children"
+            onChange={onChange}
+            filterOption={(input, option) =>
+              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+            }
+          >
+            <Option value="0">هیچکدام</Option>
+            {normalUsers &&
+              normalUsers.map((user) => {
+                return (
+                  <Option value={user._id} key={user._id}>
+                    {user.name}
+                  </Option>
+                );
+              })}
+          </Select>
 
           <Button className="my-3" type="submit" variant="primary">
             {" "}

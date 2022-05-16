@@ -8,6 +8,7 @@ import { Pagination } from "swiper";
 import ManagerBarberCard from "./ManagerBarberCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getFacilitysEmployees } from "../actions/facilityActions";
+import { REMOVE_BARBER_RESET } from "../constants/userConstants";
 
 let barbers = [
   {
@@ -54,9 +55,20 @@ export default function ManagerBarberSlider() {
   });
   const { loading, error, employees } = facilityEmployees;
 
+  const removeBarberState = useSelector((state) => {
+    return state.removeBarber;
+  });
+  const {
+    loading: removeBarberLoading,
+    error: removeBarberError,
+    message: removeBarberMessage,
+    reset: removeBarberReset,
+  } = removeBarberState;
+
   useEffect(() => {
+    console.log("text");
     dispatch(getFacilitysEmployees());
-  }, []);
+  }, [dispatch, removeBarberReset]);
   return (
     <>
       {!loading ? (
@@ -107,7 +119,7 @@ export default function ManagerBarberSlider() {
             </Row>
           </Row>
         ) : (
-          <h4>آرایشگری بر ای نمایش وجود ندارد</h4>
+          <h4>آرایشگری برای نمایش وجود ندارد</h4>
         )
       ) : (
         <Loader />

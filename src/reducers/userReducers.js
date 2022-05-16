@@ -18,6 +18,14 @@ import {
   NORMAL_USER_LIST_FAIL,
   NORMAL_USER_LIST_REQUEST,
   NORMAL_USER_LIST_SUCCESS,
+  ADD_BARBER_FAIL,
+  ADD_BARBER_SUCCESS,
+  ADD_BARBER_REQUEST,
+  REMOVE_BARBER_REQUEST,
+  REMOVE_BARBER_SUCCESS,
+  REMOVE_BARBER_FAIL,
+  ADD_BARBER_RESET,
+  REMOVE_BARBER_RESET,
 } from "../constants/userConstants.js";
 
 export const userLoginReducer = (state = {}, action) => {
@@ -101,6 +109,34 @@ export const usersNamesReducer = (state = { names: [] }, action) => {
       return { loading: false, usersNames: action.payload };
     case USER_NAMES_FAIL:
       return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+export const addBarberReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ADD_BARBER_REQUEST:
+      return { loading: true };
+    case ADD_BARBER_SUCCESS:
+      return { loading: false, message: action.payload, reset: Math.random() };
+    case ADD_BARBER_FAIL:
+      return { loading: false, error: action.payload };
+    case ADD_BARBER_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+export const removeBarberReducer = (state = {}, action) => {
+  switch (action.type) {
+    case REMOVE_BARBER_REQUEST:
+      return { loading: true };
+    case REMOVE_BARBER_SUCCESS:
+      return { loading: false, message: action.payload, reset: Math.random() };
+    case REMOVE_BARBER_FAIL:
+      return { loading: false, error: action.payload };
+    case REMOVE_BARBER_RESET:
+      return {};
     default:
       return state;
   }
