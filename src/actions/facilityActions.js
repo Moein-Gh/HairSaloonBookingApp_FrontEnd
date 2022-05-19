@@ -20,6 +20,9 @@ import {
   FACILITY_EMPLOYEE_LIST_REQUEST,
   FACILITY_EMPLOYEE_LIST_SUCCESS,
   FACILITY_EMPLOYEE_LIST_FAIL,
+  FACILITY_BARBER_LIST_REQUEST,
+  FACILITY_BARBER_LIST_SUCCESS,
+  FACILITY_BARBER_LIST_FAIL,
 } from "../constants/facilityConstants";
 import axios from "axios";
 import { facility, user } from "../config";
@@ -36,7 +39,7 @@ export const getFacilityDetail = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const { data } = await axios.get(`/api/facilities/${id}`, config);
+    const { data } = await axios.get(`${facility}/getFacility/${id}`, config);
     dispatch({ type: FACILITY_DETAIL_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -88,6 +91,33 @@ export const getFacilitysEmployees = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: FACILITY_EMPLOYEE_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getFacilitysBarbers = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: FACILITY_BARBER_LIST_REQUEST });
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const { data } = await axios.get(
+      `${user}/allbarbersInfacility/${id}`,
+      config
+    );
+    dispatch({ type: FACILITY_BARBER_LIST_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: FACILITY_BARBER_LIST_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

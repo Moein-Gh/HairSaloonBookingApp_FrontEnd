@@ -26,6 +26,7 @@ import {
   REMOVE_BARBER_FAIL,
   ADD_BARBER_RESET,
   REMOVE_BARBER_RESET,
+  SELECT_BARBER,
 } from "../constants/userConstants.js";
 
 export const userLoginReducer = (state = {}, action) => {
@@ -137,6 +138,20 @@ export const removeBarberReducer = (state = {}, action) => {
       return { loading: false, error: action.payload };
     case REMOVE_BARBER_RESET:
       return {};
+    default:
+      return state;
+  }
+};
+
+export const selectBarber = (state = { id: "" }, action) => {
+  switch (action.type) {
+    case SELECT_BARBER:
+      return {
+        id: action.id,
+        facilityId: action.facilityId,
+        reset: Math.random(),
+      };
+
     default:
       return state;
   }

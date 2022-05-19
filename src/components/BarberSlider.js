@@ -1,97 +1,83 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import "swiper/css/bundle";
 import BarberCard from "./BarberCard";
 import { Row } from "react-bootstrap";
 import { Pagination } from "swiper";
-
-let barbers = [
-  {
-    name: "سام راد",
-    image: "./images/barber-1.jpg",
-    id: 1,
-  },
-  {
-    name: "سام راد",
-    image: "./images/barber-2.jpg",
-    id: 2,
-  },
-  {
-    name: "سام راد",
-    image: "./images/barber-3.jpg",
-    id: 3,
-  },
-  {
-    name: "سام راد",
-    image: "./images/barber-4.jpg",
-    id: 4,
-  },
-  {
-    name: "سام راد",
-    image: "./images/barber-5.jpg",
-    id: 5,
-  },
-  {
-    name: "سام راد",
-    image: "./images/barber-6.jpg",
-    id: 6,
-  },
-  {
-    name: "سام راد",
-    image: "./images/barber-7.jpg",
-    id: 7,
-  },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { getFacilitysBarbers } from "../actions/facilityActions";
 
 export default function BarberSlider() {
+  const facilityBarbers = useSelector((state) => {
+    return state.facilityBarbers;
+  });
+  const {
+    loading: facilityBarbersLoading,
+    error: facilityBarbersError,
+    barbers,
+  } = facilityBarbers;
+  let dispatch = useDispatch();
+  let { facilityId } = useParams("facilityId");
+
+  useEffect(() => {
+    dispatch(getFacilitysBarbers(facilityId));
+  }, [dispatch, facilityId]);
+
   return (
     <>
-      <Row className=" mt-3 text-align-center">
-        <Row className="cardSliderContainer">
-          <Swiper
-            slidesPerView={2}
-            spaceBetween={40}
-            //   autoplay={{
-            //     delay: 5000,
-            //     disableOnInteraction: true,
-            //   }}
-            breakpoints={{
-              1200: {
-                slidesPerView: 6,
-              },
-              1000: {
-                slidesPerView: 5,
-              },
-              768: {
-                slidesPerView: 4,
-              },
-              540: {
-                slidesPerView: 3,
-                spaceBetween: 20,
-              },
-              400: {
-                slidesPerView: 2,
-                spaceBetween: 10,
-              },
-              0: {
-                slidesPerView: 1,
-              },
-            }}
-            pagination={true}
-            modules={[Autoplay, Pagination]}
-            className="mySwiper"
-          >
-            {barbers.map((item) => {
-              return (
-                <SwiperSlide key={item.id}>
-                  <BarberCard barber={item} key={item.id} />
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
+      {barbers && (
+        <Row className=" mt-3 text-align-center">
+          <Row className="cardSliderContainer">
+            <Swiper
+              slidesPerView={2}
+              spaceBetween={40}
+              //   autoplay={{
+              //     delay: 5000,
+              //     disableOnInteraction: true,
+              //   }}
+              breakpoints={{
+                1200: {
+                  slidesPerView: 6,
+                },
+                1000: {
+                  slidesPerView: 5,
+                },
+                768: {
+                  slidesPerView: 4,
+                },
+                540: {
+                  slidesPerView: 3,
+                  spaceBetween: 20,
+                },
+                400: {
+                  slidesPerView: 2,
+                  spaceBetween: 10,
+                },
+                0: {
+                  slidesPerView: 1,
+                },
+              }}
+              pagination={true}
+              modules={[Autoplay, Pagination]}
+              className="mySwiper"
+            >
+              {barbers.length != 0 ? (
+                barbers.map((item) => {
+                  return (
+                    <SwiperSlide key={item._id}>
+                      <BarberCard barber={item} key={item.id} />
+                    </SwiperSlide>
+                  );
+                })
+              ) : (
+                <h4>آرایشگری برای نمایش وجود ندارد</h4>
+              )}
+            </Swiper>
+          </Row>
         </Row>
-      </Row>
+      )}
     </>
   );
 }

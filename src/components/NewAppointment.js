@@ -9,6 +9,7 @@ import { utils } from "@hassanmojab/react-modern-calendar-datepicker";
 import TimeOption from "./TimeOption";
 import { Radio } from "antd";
 import { Space } from "antd";
+
 const times = [
   { startClock: 12, endClock: 13 },
   { startClock: 13, endClock: 14 },
@@ -245,7 +246,7 @@ const NewAppointment = () => {
           </Row>
           <Row className="defaultContainer">
             <Row id="services" className=" mt-3">
-              <BarberServicesTab />
+              <BarberServicesTab serviceType={"addable"} />
             </Row>
           </Row>
         </>

@@ -8,6 +8,7 @@ import BarberOverview from "../components/BarberOverview";
 import AppointmentHistory from "../components/AppointmentHistory";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import ServicesManager from "../components/ServicesManager";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -90,7 +91,7 @@ export default function BarberDashboard() {
       </TabPanel>
 
       <TabPanel value={value} index={3}>
-        services
+        <ServicesManager />
       </TabPanel>
     </Box>
   );

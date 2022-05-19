@@ -1,6 +1,9 @@
 import React from "react";
 import { Row, Col, Image } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import { SELECT_BARBER } from "../constants/userConstants";
 
 let headerHeight;
 setTimeout(() => {
@@ -14,6 +17,17 @@ const scrollWidthOffset = (el, height) => {
 
 const BarberCard = ({ barber }) => {
   let image = barber.image;
+  console.log(barber);
+  const dispatch = useDispatch();
+  const { facilityId } = useParams();
+  const seeServices = () => {
+    dispatch({
+      type: SELECT_BARBER,
+      id: barber._id,
+      facilityId: barber.facility._id,
+    });
+  };
+
   return (
     <Col className="barberCardContainer">
       <Row className="barberCardImageContainer">
@@ -35,10 +49,17 @@ const BarberCard = ({ barber }) => {
               scroll={(el) => {
                 scrollWidthOffset(el, headerHeight);
               }}
-              to={"/barbershop#services"}
+              to={`/barbershop/${facilityId}#services`}
               className="barberCardButton"
             >
-              <button className="btn">مشاهده خدمات</button>
+              <button
+                className="btn"
+                onClick={() => {
+                  seeServices();
+                }}
+              >
+                مشاهده خدمات
+              </button>
             </HashLink>
           </Col>
         </Row>

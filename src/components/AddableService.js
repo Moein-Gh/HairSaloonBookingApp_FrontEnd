@@ -3,7 +3,7 @@ import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const Service = ({ service }) => {
+const AddableService = ({ service }) => {
   return (
     <Row className="serviceItem">
       <Col xs={7} className="serviceTitleContainer">
@@ -23,8 +23,11 @@ const Service = ({ service }) => {
           </h6>
         </div>
       </Col>
+      <Col xs={1}>
+        <button className="btn">افزودن</button>
+      </Col>
     </Row>
   );
 };
 
-export default Service;
+export default AddableService;

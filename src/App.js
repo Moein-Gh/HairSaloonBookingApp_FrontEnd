@@ -33,7 +33,7 @@ function App() {
                   <Route path="/login" exact element={<LoginScreen />} />
                   <Route path="/" exact element={<HomeScreen />} />
                   <Route
-                    path="/barberShop"
+                    path="/barberShop/:facilityId"
                     exact
                     element={<BarberShopScreen />}
                   />

@@ -45,7 +45,7 @@ export default function CardSlider({ items: facilities }) {
             facilities.map((item, index) => {
               return (
                 <SwiperSlide key={index}>
-                  <ShopCard shop={item} />
+                  <ShopCard facility={item} />
                 </SwiperSlide>
               );
             })

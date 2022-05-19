@@ -10,51 +10,6 @@ import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 import { getUserDetail } from "../actions/userActions";
 
-let shops = [
-  {
-    name: "سام راد",
-    image: "./images/1.jpg",
-    customerGender: "بانوان",
-    location: "یافت آباد",
-  },
-  {
-    name: "سام راد",
-    image: "./images/2.jpg",
-    customerGender: "آقایان",
-    location: "یافت آباد",
-  },
-  {
-    name: "سام راد",
-    image: "./images/3.jpg",
-    customerGender: "آقایان",
-    location: "یافت آباد",
-  },
-  {
-    name: "سام راد",
-    image: "./images/1.jpg",
-    customerGender: "بانوان",
-    location: "یافت آباد",
-  },
-  {
-    name: "سام راد",
-    image: "./images/2.jpg",
-    customerGender: "آقایان",
-    location: "یافت آباد",
-  },
-  {
-    name: "سام راد",
-    image: "./images/3.jpg",
-    customerGender: "آقایان",
-    location: "یافت آباد",
-  },
-  {
-    name: "سام راد",
-    image: "./images/1.jpg",
-    customerGender: "بانوان",
-    location: "یافت آباد",
-  },
-];
-
 const HomeScreen = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();

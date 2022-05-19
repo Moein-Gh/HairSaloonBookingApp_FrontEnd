@@ -10,12 +10,10 @@ const MenFacilitiesSlider = () => {
   const maleFacilityList = useSelector((state) => {
     return state.maleFacilityList;
   });
-  const { loading: mfLoading, error: mfError, facilities } = maleFacilityList;
+  const { loading: mfLoading, facilities } = maleFacilityList;
   useEffect(() => {
-    if (facilities.length == 0) {
-      dispatch(getMaleFacilities());
-    }
-  }, []);
+    dispatch(getMaleFacilities());
+  }, [dispatch]);
 
   return (
     <Row className="defaultContainer mt-3 text-align-center">

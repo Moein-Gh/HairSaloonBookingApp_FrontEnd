@@ -14,12 +14,15 @@ import {
   FACILITY_EMPLOYEE_LIST_REQUEST,
   FACILITY_EMPLOYEE_LIST_SUCCESS,
   FACILITY_EMPLOYEE_LIST_FAIL,
+  FACILITY_BARBER_LIST_FAIL,
+  FACILITY_BARBER_LIST_REQUEST,
+  FACILITY_BARBER_LIST_SUCCESS,
 } from "../constants/facilityConstants.js";
 
 export const facilityDetailReducer = (state = { facility: {} }, action) => {
   switch (action.type) {
     case FACILITY_DETAIL_REQUEST:
-      return { loading: true };
+      return { loading: true, facility: {} };
     case FACILITY_DETAIL_SUCCESS:
       return { loading: false, facility: action.payload };
     case FACILITY_DETAIL_FAIL:
@@ -32,10 +35,22 @@ export const facilityDetailReducer = (state = { facility: {} }, action) => {
 export const facilityEmployeesReducer = (state = { employees: {} }, action) => {
   switch (action.type) {
     case FACILITY_EMPLOYEE_LIST_REQUEST:
-      return { loading: true };
+      return { loading: true, employees: {} };
     case FACILITY_EMPLOYEE_LIST_SUCCESS:
       return { loading: false, employees: action.payload };
     case FACILITY_EMPLOYEE_LIST_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+export const facilityBarbersReducer = (state = { barbers: [] }, action) => {
+  switch (action.type) {
+    case FACILITY_BARBER_LIST_REQUEST:
+      return { loading: true, barbers: [] };
+    case FACILITY_BARBER_LIST_SUCCESS:
+      return { loading: false, barbers: action.payload };
+    case FACILITY_BARBER_LIST_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;
@@ -45,7 +60,7 @@ export const facilityEmployeesReducer = (state = { employees: {} }, action) => {
 export const facilityListReducer = (state = { facilities: [] }, action) => {
   switch (action.type) {
     case FACILITY_LIST_REQUEST:
-      return { loading: true };
+      return { loading: true, facilities: [] };
     case FACILITY_LIST_SUCCESS:
       return { loading: false, facilityList: action.payload };
     case FACILITY_LIST_FAIL:
@@ -58,7 +73,7 @@ export const facilityListReducer = (state = { facilities: [] }, action) => {
 export const maleFacilityListReducer = (state = { facilities: [] }, action) => {
   switch (action.type) {
     case MALE_FACILITY_LIST_REQUEST:
-      return { loading: true };
+      return { loading: true, facilities: [] };
     case MALE_FACILITY_LIST_SUCCESS:
       return { loading: false, facilities: action.payload };
     case MALE_FACILITY_LIST_FAIL:
@@ -74,7 +89,7 @@ export const femaleFacilityListReducer = (
 ) => {
   switch (action.type) {
     case FEMALE_FACILITY_LIST_REQUEST:
-      return { loading: true };
+      return { loading: true, facilities: [] };
     case FEMALE_FACILITY_LIST_SUCCESS:
       return { loading: false, facilities: action.payload };
     case FEMALE_FACILITY_LIST_FAIL:

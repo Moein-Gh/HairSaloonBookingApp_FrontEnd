@@ -10,6 +10,7 @@ import {
   normalUserListReducer,
   addBarberReducer,
   removeBarberReducer,
+  selectBarber,
 } from "./reducers/userReducers";
 import {
   facilityDetailReducer,
@@ -17,7 +18,17 @@ import {
   maleFacilityListReducer,
   femaleFacilityListReducer,
   facilityEmployeesReducer,
+  facilityBarbersReducer,
 } from "./reducers/facilityReducers";
+
+import { categoryListReducer } from "./reducers/categoryReducers";
+import {
+  serviceUserReducer,
+  createServiceReducer,
+  deleteServiceReducer,
+  serviceBarberReducer,
+  editServiceInfoReducer,
+} from "./reducers/serviceReducers";
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -33,6 +44,14 @@ const reducer = combineReducers({
   normalUserList: normalUserListReducer,
   addBarber: addBarberReducer,
   removeBarber: removeBarberReducer,
+  facilityBarbers: facilityBarbersReducer,
+  categoryList: categoryListReducer,
+  serviceUser: serviceUserReducer,
+  serviceBarber: serviceBarberReducer,
+  createService: createServiceReducer,
+  deleteService: deleteServiceReducer,
+  selectBarber: selectBarber,
+  editServiceInfo: editServiceInfoReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

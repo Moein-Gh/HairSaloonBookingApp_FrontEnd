@@ -27,6 +27,9 @@ import {
   REMOVE_BARBER_REQUEST,
   REMOVE_BARBER_SUCCESS,
   REMOVE_BARBER_FAIL,
+  FACILITY_BARBER_LIST_FAIL,
+  FACILITY_BARBER_LIST_REQUEST,
+  FACILITY_BARBER_LIST_SUCCESS,
 } from "../constants/userConstants";
 import axios from "axios";
 import { auth, user } from "../config";
