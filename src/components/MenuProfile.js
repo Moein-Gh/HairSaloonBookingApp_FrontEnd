@@ -3,7 +3,9 @@ import { Col, Image, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../actions/userActions";
-let image = "./images/profile.jpg";
+import { path } from "../config";
+let image = `https://nyheadshots.com/wp-content/uploads/2018/07/headshots-800x536.jpg`;
+
 let name = "هانیه قربانعلی";
 
 const MenuProfile = ({ setShow }) => {

@@ -8,7 +8,10 @@ import Service from "./Service";
 import EditableService from "./EditableService";
 import AddableService from "./AddableService";
 import { useDispatch, useSelector } from "react-redux";
-import { getNABarbersServices } from "../actions/serviceActions";
+import {
+  getServicesByUserId,
+  getUsersServices,
+} from "../actions/serviceActions";
 import Loader from "./Loader";
 
 function TabPanel(props) {
@@ -44,31 +47,55 @@ function a11yProps(index) {
   };
 }
 
-export default function BarberServicesTab({
-  serviceType,
-  serviceList,
-  setServiceList,
-}) {
+export default function UserServicesTab({ userId, serviceType }) {
   const [value, setValue] = React.useState(0);
   const dispatch = useDispatch();
 
-  const serviceNABarber = useSelector((state) => {
-    return state.serviceNABarber;
+  const userLogin = useSelector((state) => {
+    return state.userLogin;
   });
-  const { loading: sbLoading, services } = serviceNABarber;
+  const { loading, error, userInfo } = userLogin;
 
-  let categories = services;
-
-  const NABarberInfo = useSelector((state) => {
-    return state.NABarberInfo;
+  const createService = useSelector((state) => {
+    return state.createService;
   });
-  const { NABarberId } = NABarberInfo;
+  const { reset: csReset } = createService;
+
+  const editServiceInfo = useSelector((state) => {
+    return state.editServiceInfo;
+  });
+  const { service: editService, reset: editReset } = editServiceInfo;
+
+  const editServiceReducer = useSelector((state) => {
+    return state.editService;
+  });
+  const { message: editServiceMessage } = editServiceReducer;
+
+  const deleteService = useSelector((state) => {
+    return state.deleteService;
+  });
+  const { reset: deleteReset } = deleteService;
+
+  const serviceUser = useSelector((state) => {
+    return state.serviceUser;
+  });
+  const { loading: suLoading, error: suError } = serviceUser;
+
+  const serviceBarber = useSelector((state) => {
+    return state.serviceBarber;
+  });
+  const { loading: sbLoading, error: sbError } = serviceBarber;
+
+  let categories = userId ? serviceBarber.services : serviceUser.services;
 
   useEffect(() => {
-    if (NABarberId) {
-      dispatch(getNABarbersServices(NABarberId));
+    if (!userId) {
+      dispatch(getUsersServices());
+    } else {
+      console.log(userId);
+      dispatch(getServicesByUserId(userId));
     }
-  }, [dispatch, NABarberId]);
+  }, [dispatch, csReset, userId, deleteReset]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -76,7 +103,7 @@ export default function BarberServicesTab({
 
   return (
     <>
-      {sbLoading ? (
+      {suLoading || sbLoading ? (
         <Loader />
       ) : categories.length !== 0 ? (
         <Box sx={{ width: "100%" }}>
@@ -111,12 +138,7 @@ export default function BarberServicesTab({
                       );
                     } else if (serviceType === "addable") {
                       return (
-                        <AddableService
-                          serviceList={serviceList}
-                          setServiceList={setServiceList}
-                          service={service}
-                          key={service._id}
-                        />
+                        <AddableService service={service} key={service._id} />
                       );
                     } else {
                       return <Service service={service} key={service._id} />;

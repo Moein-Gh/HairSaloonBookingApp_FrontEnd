@@ -28,7 +28,19 @@ import {
   deleteServiceReducer,
   serviceBarberReducer,
   editServiceInfoReducer,
+  editServiceReducer,
+  serviceNABarberReducer,
 } from "./reducers/serviceReducers";
+
+import {
+  NABarberInfoReducer,
+  NADateInfoReducer,
+  NAFacilityInfoReducer,
+  NAServicesInfoReducer,
+  NATimeInfoReducer,
+  appointmentDetailReducer,
+  appointmentListReducer,
+} from "./reducers/appointmentReducers";
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -48,10 +60,19 @@ const reducer = combineReducers({
   categoryList: categoryListReducer,
   serviceUser: serviceUserReducer,
   serviceBarber: serviceBarberReducer,
+  serviceNABarber: serviceNABarberReducer,
   createService: createServiceReducer,
   deleteService: deleteServiceReducer,
   selectBarber: selectBarber,
   editServiceInfo: editServiceInfoReducer,
+  editService: editServiceReducer,
+  NABarberInfo: NABarberInfoReducer,
+  NADateInfo: NADateInfoReducer,
+  NAFacilityInfo: NAFacilityInfoReducer,
+  NAServicesInfo: NAServicesInfoReducer,
+  NATimeInfo: NATimeInfoReducer,
+  appointmentDetail: appointmentDetailReducer,
+  appointmentList: appointmentListReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

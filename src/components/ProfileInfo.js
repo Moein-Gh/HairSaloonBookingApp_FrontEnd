@@ -7,7 +7,8 @@ import AppointmentHistroty from "./AppointmentHistory";
 import { useDispatch } from "react-redux";
 import { getUserDetail } from "../actions/userActions";
 import Loader from "../components/Loader";
-let image = "./images/profile.jpg";
+let image =
+  "https://nyheadshots.com/wp-content/uploads/2018/07/headshots-800x536.jpg";
 
 const ProfileInfo = () => {
   const dispatch = useDispatch();

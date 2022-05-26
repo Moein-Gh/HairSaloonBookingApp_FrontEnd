@@ -9,6 +9,7 @@ import FormContainer from "../components/FormContainer.js";
 import { Select } from "antd";
 import { getAllCategories } from "../actions/categoryActions";
 import { createNewService, updateService } from "../actions/serviceActions";
+import { EMPTY_EDIT_SERVICE_INFO } from "../constants/serviceConstants";
 
 const ServicesManager = () => {
   const [title, setTitle] = useState("");
@@ -33,7 +34,17 @@ const ServicesManager = () => {
   const editServiceInfo = useSelector((state) => {
     return state.editServiceInfo;
   });
-  const { service: editService } = editServiceInfo;
+  const { service: editService, reset: editReset } = editServiceInfo;
+
+  const editServiceReducer = useSelector((state) => {
+    return state.editService;
+  });
+  const {
+    loading: editServiceLoading,
+    error: editServiceError,
+    message: editServiceMessage,
+    reset: editServiceReset,
+  } = editServiceReducer;
 
   const createService = useSelector((state) => {
     return state.createService;
@@ -41,11 +52,22 @@ const ServicesManager = () => {
   const {
     loading: csLoading,
     error: csError,
-    message,
+    message: csMessage,
     reset: csReset,
   } = createService;
 
+  const deleteService = useSelector((state) => {
+    return state.deleteService;
+  });
+  const {
+    loading: deleteLoading,
+    error: deleteError,
+    message: deleteMessage,
+    reset: deleteReset,
+  } = deleteService;
+
   const [editTitle, setEditTitle] = useState("");
+  const [editServiceId, setEditServiceId] = useState("");
   const [editCategoryId, setEditCategoryId] = useState("");
   const [editPrice, setEditPrice] = useState(0);
   const [editTime, setEditTime] = useState(0);
@@ -61,20 +83,33 @@ const ServicesManager = () => {
       setPrice(0);
       setTime(0);
 
-      if (editService) {
-        console.log(editService);
+      if (editService.id) {
         setEditTitle(editService.title);
         setEditCategoryId(editService.categoryId);
-        setEditCategoryId(editService.categoryId);
+        setEditServiceId(editService.id);
         setEditPrice(editService.price);
         setEditTime(editService.time);
+      } else {
+        setEditTitle("");
+        setEditCategoryId("");
+        setEditServiceId("");
+        setEditPrice(0);
+        setEditTime(0);
       }
     }
-  }, [navigate, userInfo, csReset]);
+  }, [
+    navigate,
+    dispatch,
+    userInfo,
+    editReset,
+    csReset,
+    editService.id,
+    deleteReset,
+  ]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (price != 0 && time != 0 && categoryId != 0) {
+    if (price !== 0 && time !== 0 && categoryId !== 0) {
       dispatch(
         createNewService({
           categoryId,
@@ -87,9 +122,9 @@ const ServicesManager = () => {
   };
   const submitHandlerEdit = (e) => {
     e.preventDefault();
-    if (editPrice != 0 && editTime != 0 && editCategoryId != 0) {
+    if (editPrice !== 0 && editTime !== 0 && editCategoryId !== 0) {
       dispatch(
-        updateService(editService._id, {
+        updateService(editService.id, {
           editCategoryId,
           editTitle,
           editPrice,
@@ -107,7 +142,7 @@ const ServicesManager = () => {
   }
   return (
     <>
-      {!editService && (
+      {editServiceId === "" && (
         <Row className="defaultContainer">
           <Row>
             <h5>افزودن خدمت جدید</h5>
@@ -213,7 +248,7 @@ const ServicesManager = () => {
         </Row>
       )}
 
-      {editService && (
+      {editServiceId !== "" && (
         <Row className="defaultContainer">
           <Row>
             <h5>ویرایش خدمت</h5>
@@ -308,6 +343,17 @@ const ServicesManager = () => {
                             {" "}
                             ویرایش
                           </Button>
+                          <Button
+                            onClick={() => {
+                              dispatch({ type: EMPTY_EDIT_SERVICE_INFO });
+                            }}
+                            className="my-3"
+                            type="button"
+                            variant="primary"
+                          >
+                            {" "}
+                            انصراف
+                          </Button>
                         </Col>
                       </Row>
                     </Form>
@@ -322,7 +368,7 @@ const ServicesManager = () => {
       <Row className="defaultContainer">
         <h5> خدمت ها </h5>
         <Row>
-          <BarberServicesTab serviceType={"editable"} />
+          <BarberServicesTab serviceType={"editable"} key={editServiceReset} />
         </Row>
       </Row>
     </>

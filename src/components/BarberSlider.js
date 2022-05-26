@@ -63,7 +63,7 @@ export default function BarberSlider() {
               modules={[Autoplay, Pagination]}
               className="mySwiper"
             >
-              {barbers.length != 0 ? (
+              {barbers.length !== 0 ? (
                 barbers.map((item) => {
                   return (
                     <SwiperSlide key={item._id}>

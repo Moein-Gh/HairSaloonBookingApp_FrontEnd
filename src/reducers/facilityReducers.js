@@ -44,6 +44,7 @@ export const facilityEmployeesReducer = (state = { employees: {} }, action) => {
       return state;
   }
 };
+
 export const facilityBarbersReducer = (state = { barbers: [] }, action) => {
   switch (action.type) {
     case FACILITY_BARBER_LIST_REQUEST:
@@ -62,7 +63,7 @@ export const facilityListReducer = (state = { facilities: [] }, action) => {
     case FACILITY_LIST_REQUEST:
       return { loading: true, facilities: [] };
     case FACILITY_LIST_SUCCESS:
-      return { loading: false, facilityList: action.payload };
+      return { loading: false, facilities: action.payload };
     case FACILITY_LIST_FAIL:
       return { loading: false, error: action.payload };
     default:

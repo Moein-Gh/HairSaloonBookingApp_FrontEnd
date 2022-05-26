@@ -36,7 +36,6 @@ const BarberShopScreen = () => {
     return state.selectBarber;
   });
   const { id, facilityId: barberFacilityId, reset: barberReset } = selectBarber;
-  console.log(barberFacilityId);
   useEffect(() => {
     if (!userInfo) navigate("/login");
     else {
@@ -70,7 +69,7 @@ const BarberShopScreen = () => {
                       {facility.description ? facility.description : "نا مشخص"}
                     </h4>
                     <h4>
-                      {facility.customerGender == "male"
+                      {facility.customerGender === "male"
                         ? "مخصوص آقایان"
                         : "مخصوص بانوان"}
                     </h4>
@@ -106,7 +105,7 @@ const BarberShopScreen = () => {
         <BarberShopTab />
       </Row>
       <Row id="services" className="defaultContainer mt-3">
-        {id && barberFacilityId == facilityId ? (
+        {id && barberFacilityId === facilityId ? (
           <BarberServicesTab userId={id} key={barberReset} />
         ) : (
           <h4>برای مشاهده خدمات ، آرایشگر مورد نظر خود را انتخاب نمایید </h4>

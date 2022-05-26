@@ -19,6 +19,7 @@
     "chart.js": "^3.7.0",
     "framer-motion": "^6.2.9",
     "jwt-decode": "^3.1.2",
+    "path": "^0.12.7",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.1",
     "react-chartjs-2": "^4.0.1",
@@ -32,6 +33,7 @@
     "react-scripts": "5.0.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
+    "stream": "^0.0.2",
     "swiper": "^8.1.4",
     "web-vitals": "^2.1.4"
   },

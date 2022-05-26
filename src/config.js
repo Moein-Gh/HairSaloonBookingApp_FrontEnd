@@ -1,4 +1,6 @@
 let port = `http://localhost:3001/booking/`;
+export const path =
+  "/home/moein/Project/frontend/HairSaloonBookingApp_FrontEnd";
 export const auth = `${port}auth`;
 export const user = `${port}users`;
 export const facility = `${port}facilities`;

@@ -66,7 +66,6 @@ export default function ManagerBarberSlider() {
   } = removeBarberState;
 
   useEffect(() => {
-    console.log("text");
     dispatch(getFacilitysEmployees());
   }, [dispatch, removeBarberReset]);
   return (

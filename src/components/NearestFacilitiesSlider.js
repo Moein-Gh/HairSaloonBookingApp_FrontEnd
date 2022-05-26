@@ -12,7 +12,7 @@ const MenFacilitiesSlider = () => {
   });
   const { loading: mfLoading, error: mfError, facilities } = maleFacilityList;
   useEffect(() => {
-    if (facilities.length == 0) {
+    if (facilities.length === 0) {
       dispatch(getMaleFacilities());
     }
   }, []);

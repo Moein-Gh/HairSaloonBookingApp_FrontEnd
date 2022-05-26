@@ -52,7 +52,6 @@ const AddBarberScreen = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(barberId);
     dispatch(addBarber(barberId));
   };
 

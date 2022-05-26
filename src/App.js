@@ -18,7 +18,6 @@ import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import ManagerDashboardScreen from "./screens/ManagerDashboardScreen";
 import AddBarberScreen from "./screens/AddBarberScreen";
-
 function App() {
   return (
     <Router>

@@ -63,7 +63,7 @@ export const getAllFacilities = () => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const { data } = await axios.get(`/api/facilities`, config);
+    const { data } = await axios.get(`${facility}/allfacilities`, config);
     dispatch({ type: FACILITY_LIST_SUCCESS, payload: data });
   } catch (error) {
     dispatch({

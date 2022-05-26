@@ -17,7 +17,6 @@ const scrollWidthOffset = (el, height) => {
 
 const BarberCard = ({ barber }) => {
   let image = barber.image;
-  console.log(barber);
   const dispatch = useDispatch();
   const { facilityId } = useParams();
   const seeServices = () => {

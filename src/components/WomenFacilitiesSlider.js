@@ -12,7 +12,7 @@ const WomenFacilitiesSlider = () => {
   });
   const { loading: mfLoading, error: mfError, facilities } = femaleFacilityList;
   useEffect(() => {
-    if (facilities.length == 0) {
+    if (facilities.length === 0) {
       dispatch(getFemaleFacilities());
     }
   }, []);

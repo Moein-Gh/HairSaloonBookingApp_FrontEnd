@@ -4,7 +4,13 @@ import { Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import { EDIT_SERVICE_INFO } from "../constants/serviceConstants";
+import { deleteService } from "../actions/serviceActions";
+import { QuestionCircleOutlined } from "@ant-design/icons";
+import { Popconfirm } from "antd";
+import {
+  DELETE_SERVICE_REQUEST,
+  SET_EDIT_SERVICE_INFO,
+} from "../constants/serviceConstants";
 
 const EditableService = ({ service }) => {
   let headerHeight;
@@ -20,7 +26,7 @@ const EditableService = ({ service }) => {
   const dispatch = useDispatch();
   const editHandler = () => {
     dispatch({
-      type: EDIT_SERVICE_INFO,
+      type: SET_EDIT_SERVICE_INFO,
       service: {
         id: service._id,
         title: service.title,
@@ -29,6 +35,10 @@ const EditableService = ({ service }) => {
         categoryId: service.categoryId._id,
       },
     });
+  };
+
+  const removeHandler = () => {
+    dispatch(deleteService(service._id));
   };
 
   return (
@@ -63,7 +73,12 @@ const EditableService = ({ service }) => {
           </button>
         </HashLink>
 
-        <button className="btn">حذف</button>
+        <Popconfirm
+          title="آیا از حذف این خدمت اطمینان دارید ؟"
+          onConfirm={removeHandler}
+        >
+          <button className="btn">حذف</button>
+        </Popconfirm>
       </Col>
     </Row>
   );
