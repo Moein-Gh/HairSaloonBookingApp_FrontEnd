@@ -40,6 +40,7 @@ import {
   NATimeInfoReducer,
   appointmentDetailReducer,
   appointmentListReducer,
+  possibleTimesReducer,
 } from "./reducers/appointmentReducers";
 
 const reducer = combineReducers({
@@ -73,6 +74,7 @@ const reducer = combineReducers({
   NATimeInfo: NATimeInfoReducer,
   appointmentDetail: appointmentDetailReducer,
   appointmentList: appointmentListReducer,
+  possibleTimes: possibleTimesReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

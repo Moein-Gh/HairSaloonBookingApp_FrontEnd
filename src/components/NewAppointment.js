@@ -6,9 +6,14 @@ import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
 import { utils } from "@hassanmojab/react-modern-calendar-datepicker";
 import ChooseFacility from "./ChooseFacility";
 import ChooseBarber from "./ChooseBarber";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ChooseService from "./ChooseServices";
 import ChooseDateAndTime from "./ChooseDateAndTime";
+import {
+  EMPTY_NEW_APPOINTMENT_FACILITY_INFO,
+  EMPTY_NEW_APPOINTMENT_BARBER_INFO,
+  EMPTY_POSSIBLE_TIMES,
+} from "../constants/appointmentConstants";
 
 const { Step } = Steps;
 
@@ -17,8 +22,9 @@ const defaultValue = utils("fa").getToday();
 const NewAppointment = () => {
   const [current, setCurrent] = useState(0);
   const [selectedDay, setSelectedDay] = useState(defaultValue);
+  const [selectedTime, setSelectedTime] = useState({});
   const [serviceList, setServiceList] = useState([]);
-
+  const dispatch = useDispatch();
   // USESELECTORS
   const NAFacilityInfo = useSelector((state) => {
     return state.NAFacilityInfo;
@@ -57,8 +63,11 @@ const NewAppointment = () => {
       title: "انتخاب زمان",
       content: (
         <ChooseDateAndTime
+          serviceList={serviceList}
           selectedDay={selectedDay}
           setSelectedDay={setSelectedDay}
+          selectedTime={selectedTime}
+          setSelectedTime={setSelectedTime}
         />
       ),
     },
@@ -95,7 +104,11 @@ const NewAppointment = () => {
                 ? serviceList.length === 0
                   ? true
                   : false
-                : true
+                : current === 2
+                ? selectedTime.startTime
+                  ? false
+                  : true
+                : false
             }
             type="primary"
             onClick={() => next()}
@@ -114,7 +127,28 @@ const NewAppointment = () => {
           </Button>
         )}
         {current > 0 && (
-          <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
+          <Button
+            style={{ margin: "0 8px" }}
+            onClick={() => {
+              if (current === 1) {
+                dispatch({ type: EMPTY_NEW_APPOINTMENT_BARBER_INFO });
+                dispatch({ type: EMPTY_NEW_APPOINTMENT_FACILITY_INFO });
+                prev();
+              } else if (current === 2) {
+                setServiceList([]);
+                dispatch({ type: EMPTY_POSSIBLE_TIMES });
+                setSelectedTime({});
+                prev();
+              } else if (current === 3) {
+                dispatch({ type: EMPTY_POSSIBLE_TIMES });
+                setSelectedTime({});
+                setSelectedDay(defaultValue);
+                prev();
+              } else {
+                prev();
+              }
+            }}
+          >
             قبلی
           </Button>
         )}

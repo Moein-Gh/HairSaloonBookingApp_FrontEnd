@@ -13,8 +13,11 @@ const NAServicesList = ({ serviceList }) => {
   const getDurationSum = (services) => {
     let sum = 0;
     services.forEach((service) => {
-      sum = sum + service.duration;
+      sum = sum + service.time;
     });
+    if (sum % 15 !== 0) {
+      sum = sum + (15 - (sum % 15));
+    }
     return sum;
   };
   useEffect(() => {}, [serviceList]);
@@ -40,7 +43,7 @@ const NAServicesList = ({ serviceList }) => {
               <Col xs={2}>
                 <h5>مدت زمان</h5>
                 {serviceList.map((service) => {
-                  return <h6 key={Math.random()}>{service.duration}</h6>;
+                  return <h6 key={Math.random()}>{service.time} دقیقه</h6>;
                 })}
               </Col>
               <Col xs={2}>
@@ -60,12 +63,17 @@ const NAServicesList = ({ serviceList }) => {
                 <h5>مجموع</h5>
               </Col>
               <Col xs={2}>
-                <h5>{getDurationSum(serviceList)}</h5>
+                <h5>{getDurationSum(serviceList)} دقیقه</h5>
               </Col>
               <Col xs={2}>
                 <h5>{getPriceSum(serviceList).toLocaleString()} تومان</h5>
               </Col>
             </Row>
+            <br />
+            <h6>
+              * مجموع مدت زمان نوبت به نزدیک ترین ربع ساعت به سمت بالا گرد شده
+              است
+            </h6>
           </Col>
         </Row>
       )}

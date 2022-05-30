@@ -17,6 +17,10 @@ import {
   EMPTY_NEW_APPOINTMENT_TIME_INFO,
   ADD_APPOINTMENT_SERVICES_INFO,
   REMOVE_APPOINTMENT_SERVICES_INFO,
+  POSSIBLE_TIMES_REQUEST,
+  POSSIBLE_TIMES_SUCCESS,
+  POSSIBLE_TIMES_FAIL,
+  EMPTY_POSSIBLE_TIMES,
 } from "../constants/appointmentConstants.js";
 
 export const appointmentDetailReducer = (
@@ -30,6 +34,21 @@ export const appointmentDetailReducer = (
       return { loading: false, appointment: action.payload };
     case APPOINTMENT_DETAIL_FAIL:
       return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const possibleTimesReducer = (state = { possibleTimes: [] }, action) => {
+  switch (action.type) {
+    case POSSIBLE_TIMES_REQUEST:
+      return { loading: true, possibleTimes: [] };
+    case POSSIBLE_TIMES_SUCCESS:
+      return { loading: false, possibleTimes: action.payload };
+    case POSSIBLE_TIMES_FAIL:
+      return { loading: false, error: action.payload };
+    case EMPTY_POSSIBLE_TIMES:
+      return { loading: false, possibleTimes: [] };
     default:
       return state;
   }
