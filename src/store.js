@@ -34,13 +34,11 @@ import {
 
 import {
   NABarberInfoReducer,
-  NADateInfoReducer,
   NAFacilityInfoReducer,
-  NAServicesInfoReducer,
-  NATimeInfoReducer,
   appointmentDetailReducer,
   appointmentListReducer,
   possibleTimesReducer,
+  createAppointmentReducer,
 } from "./reducers/appointmentReducers";
 
 const reducer = combineReducers({
@@ -68,13 +66,11 @@ const reducer = combineReducers({
   editServiceInfo: editServiceInfoReducer,
   editService: editServiceReducer,
   NABarberInfo: NABarberInfoReducer,
-  NADateInfo: NADateInfoReducer,
   NAFacilityInfo: NAFacilityInfoReducer,
-  NAServicesInfo: NAServicesInfoReducer,
-  NATimeInfo: NATimeInfoReducer,
   appointmentDetail: appointmentDetailReducer,
   appointmentList: appointmentListReducer,
   possibleTimes: possibleTimesReducer,
+  createAppointment: createAppointmentReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

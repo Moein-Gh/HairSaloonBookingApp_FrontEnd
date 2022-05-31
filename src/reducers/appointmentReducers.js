@@ -21,6 +21,9 @@ import {
   POSSIBLE_TIMES_SUCCESS,
   POSSIBLE_TIMES_FAIL,
   EMPTY_POSSIBLE_TIMES,
+  CREATE_APPOINTMENT_REQUEST,
+  CREATE_APPOINTMENT_SUCCESS,
+  CREATE_APPOINTMENT_FAIL,
 } from "../constants/appointmentConstants.js";
 
 export const appointmentDetailReducer = (
@@ -92,36 +95,15 @@ export const NABarberInfoReducer = (state = { NABarberId: "" }, action) => {
       return state;
   }
 };
-export const NAServicesInfoReducer = (state = { NAServices: [] }, action) => {
+
+export const createAppointmentReducer = (state = {}, action) => {
   switch (action.type) {
-    case NEW_APPOINTMENT_SERVICES_INFO:
-      return { NAServices: action.services };
-    case ADD_APPOINTMENT_SERVICES_INFO:
-      return { NAServices: action.services };
-    case REMOVE_APPOINTMENT_SERVICES_INFO:
-      return { NAServices: action.services };
-    case EMPTY_NEW_APPOINTMENT_SERVICES_INFO:
-      return { NAServices: [] };
-    default:
-      return state;
-  }
-};
-export const NADateInfoReducer = (state = { NADate: "" }, action) => {
-  switch (action.type) {
-    case NEW_APPOINTMENT_DATE_INFO:
-      return { NADate: action.date };
-    case EMPTY_NEW_APPOINTMENT_DATE_INFO:
-      return { NADate: "" };
-    default:
-      return state;
-  }
-};
-export const NATimeInfoReducer = (state = { NATime: {} }, action) => {
-  switch (action.type) {
-    case NEW_APPOINTMENT_TIME_INFO:
-      return { NATime: action.time };
-    case EMPTY_NEW_APPOINTMENT_TIME_INFO:
-      return { NATime: {} };
+    case CREATE_APPOINTMENT_REQUEST:
+      return { loading: true };
+    case CREATE_APPOINTMENT_SUCCESS:
+      return { loading: false, message: action.payload };
+    case CREATE_APPOINTMENT_FAIL:
+      return { loading: false, error: action.payload };
     default:
       return state;
   }

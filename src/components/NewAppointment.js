@@ -14,6 +14,8 @@ import {
   EMPTY_NEW_APPOINTMENT_BARBER_INFO,
   EMPTY_POSSIBLE_TIMES,
 } from "../constants/appointmentConstants";
+import NewAppointmentSummary from "./NewAppointmentSummary";
+import { createNewAppointment } from "../actions/appointmentActions";
 
 const { Step } = Steps;
 
@@ -35,6 +37,17 @@ const NewAppointment = () => {
     return state.NABarberInfo;
   });
   const { NABarberId } = NABarberInfo;
+
+  const createAppointment = useSelector((state) => {
+    return state.createAppointment;
+  });
+  const { loading, message: successMessage, error } = createAppointment;
+  if (successMessage) {
+    message.success("درخواست شما با موفقیت به آرایشگر فرستاده شد");
+  }
+  if (error) {
+    message.error("لطفا دوباره تلاش فرمایید");
+  }
   // -- USESELECTORS
 
   const steps = [
@@ -73,6 +86,15 @@ const NewAppointment = () => {
     },
     {
       title: "ثبت نوبت",
+      content: (
+        <NewAppointmentSummary
+          selectedDay={selectedDay}
+          selectedTime={selectedTime}
+          serviceList={serviceList}
+          NAFacilityId={NAFacilityId}
+          NABarberId={NABarberId}
+        />
+      ),
     },
   ];
 
@@ -120,7 +142,15 @@ const NewAppointment = () => {
           <Button
             type="primary"
             onClick={() =>
-              message.success("درخواست شما با موفقیت به آرایشگر فرستاده شد")
+              dispatch(
+                createNewAppointment({
+                  NAFacilityId,
+                  NABarberId,
+                  serviceList,
+                  selectedDay,
+                  selectedTime,
+                })
+              )
             }
           >
             ثبت درخواست
