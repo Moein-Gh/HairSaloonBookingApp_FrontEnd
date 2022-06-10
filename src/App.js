@@ -11,13 +11,14 @@ import BarberShopScreen from "./screens/BarberShopScreen";
 import UserprofileScreen from "./screens/UserprofileScreen";
 import NewAppointmentScreen from "./screens/NewAppointmentScreen";
 import ScrollToTop from "./components/ScrollToTop";
-import AllAppointment from "./screens/AllAppointment";
 import BarberShops from "./screens/BarberShops";
 import BarberDashboard from "./screens/BarberDashboard";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import ManagerDashboardScreen from "./screens/ManagerDashboardScreen";
 import AddBarberScreen from "./screens/AddBarberScreen";
+import AppointmentScreen from "./screens/AppointmentScreen";
+import AllAppointments from "./screens/AllAppointments";
 function App() {
   return (
     <Router>
@@ -42,14 +43,24 @@ function App() {
                     element={<NewAppointmentScreen />}
                   />
                   <Route
+                    path="/appointmentScreen/:appointmentId"
+                    exact
+                    element={<AppointmentScreen />}
+                  />
+                  <Route
                     path="/addbarber"
                     exact
                     element={<AddBarberScreen />}
                   />
                   <Route
-                    path="/allAppointments"
+                    path="/allUserAppointments"
                     exact
-                    element={<AllAppointment />}
+                    element={<AllAppointments role="user" />}
+                  />
+                  <Route
+                    path="/allBarberAppointments"
+                    exact
+                    element={<AllAppointments role="user" />}
                   />
                   <Route
                     path="/UserprofileScreen"

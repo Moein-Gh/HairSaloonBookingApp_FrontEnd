@@ -11,6 +11,7 @@ import {
 import BarberServicesTab from "../components/BarberServicesTab";
 import BarberShopTab from "../components/BarberShopTab";
 import Loader from "../components/Loader";
+import { EMPTY_SELECT_BARBER } from "../constants/userConstants";
 
 const BarberShopScreen = () => {
   let dispatch = useDispatch();
@@ -40,6 +41,7 @@ const BarberShopScreen = () => {
     if (!userInfo) navigate("/login");
     else {
       dispatch(getFacilityDetail(facilityId));
+      dispatch({ type: EMPTY_SELECT_BARBER });
     }
   }, [userInfo, facilityId]);
   return (

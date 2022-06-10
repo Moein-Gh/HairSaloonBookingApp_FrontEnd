@@ -4,6 +4,7 @@ import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
 import { useDispatch, useSelector } from "react-redux";
 import { getPossibleTimes } from "../actions/appointmentActions";
 import { EMPTY_POSSIBLE_TIMES } from "../constants/appointmentConstants";
+import { utils } from "@hassanmojab/react-modern-calendar-datepicker";
 const ChooseDate = ({
   selectedDay,
   setSelectedDay,
@@ -51,6 +52,7 @@ const ChooseDate = ({
               setSelectedDay(e);
             }}
             shouldHighlightWeekends
+            minimumDate={utils("fa").getToday()}
             locale="fa"
             renderFooter={() => (
               <div

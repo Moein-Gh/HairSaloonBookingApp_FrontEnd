@@ -45,6 +45,7 @@ export const getUsersServices = () => async (dispatch, getState) => {
     });
   }
 };
+
 export const getNABarbersServices = (id) => async (dispatch, getState) => {
   try {
     dispatch({ type: SERVICE_NABARBER_REQUEST });

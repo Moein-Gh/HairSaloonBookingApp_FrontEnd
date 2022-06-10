@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Col, Row, Form, Button, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import BarberServicesTab from "./BarberServicesTab";
 import Loader from "./Loader";
 import { Link } from "react-router-dom";
 import FormContainer from "../components/FormContainer.js";
@@ -10,6 +9,7 @@ import { Select } from "antd";
 import { getAllCategories } from "../actions/categoryActions";
 import { createNewService, updateService } from "../actions/serviceActions";
 import { EMPTY_EDIT_SERVICE_INFO } from "../constants/serviceConstants";
+import UserServicesTab from "./UserServicesTab";
 
 const ServicesManager = () => {
   const [title, setTitle] = useState("");
@@ -368,7 +368,7 @@ const ServicesManager = () => {
       <Row className="defaultContainer">
         <h5> خدمت ها </h5>
         <Row>
-          <BarberServicesTab serviceType={"editable"} key={editServiceReset} />
+          <UserServicesTab serviceType={"editable"} key={editServiceReset} />
         </Row>
       </Row>
     </>

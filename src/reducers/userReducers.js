@@ -1,32 +1,35 @@
 import {
-  USER_LOGIN_REQUEST,
-  USER_LOGIN_SUCCESS,
-  USER_LOGIN_FAIL,
-  USER_LOGOUT,
-  USER_DETAIL_REQUEST,
-  USER_DETAIL_SUCCESS,
-  USER_DETAIL_FAIL,
-  USER_LIST_REQUEST,
-  USER_LIST_SUCCESS,
-  USER_LIST_FAIL,
-  USER_NAMES_REQUEST,
-  USER_NAMES_SUCCESS,
-  USER_NAMES_FAIL,
-  USER_REGISTER_FAIL,
-  USER_REGISTER_REQUEST,
-  USER_REGISTER_SUCCESS,
+  ADD_BARBER_FAIL,
+  ADD_BARBER_REQUEST,
+  ADD_BARBER_RESET,
+  ADD_BARBER_SUCCESS,
+  EMPTY_BACK_URL,
+  EMPTY_SELECT_BARBER,
   NORMAL_USER_LIST_FAIL,
   NORMAL_USER_LIST_REQUEST,
   NORMAL_USER_LIST_SUCCESS,
-  ADD_BARBER_FAIL,
-  ADD_BARBER_SUCCESS,
-  ADD_BARBER_REQUEST,
-  REMOVE_BARBER_REQUEST,
-  REMOVE_BARBER_SUCCESS,
   REMOVE_BARBER_FAIL,
-  ADD_BARBER_RESET,
+  REMOVE_BARBER_REQUEST,
   REMOVE_BARBER_RESET,
+  REMOVE_BARBER_SUCCESS,
   SELECT_BARBER,
+  SET_BACK_URL,
+  USER_DETAIL_FAIL,
+  USER_DETAIL_REQUEST,
+  USER_DETAIL_SUCCESS,
+  USER_LIST_FAIL,
+  USER_LIST_REQUEST,
+  USER_LIST_SUCCESS,
+  USER_LOGIN_FAIL,
+  USER_LOGIN_REQUEST,
+  USER_LOGIN_SUCCESS,
+  USER_LOGOUT,
+  USER_NAMES_FAIL,
+  USER_NAMES_REQUEST,
+  USER_NAMES_SUCCESS,
+  USER_REGISTER_FAIL,
+  USER_REGISTER_REQUEST,
+  USER_REGISTER_SUCCESS,
 } from "../constants/userConstants.js";
 
 export const userLoginReducer = (state = {}, action) => {
@@ -39,6 +42,17 @@ export const userLoginReducer = (state = {}, action) => {
       return { loading: false, error: action.payload };
     case USER_LOGOUT:
       return {};
+    default:
+      return state;
+  }
+};
+
+export const backUrlReducer = (state = {}, action) => {
+  switch (action.type) {
+    case SET_BACK_URL:
+      return { url: action.url };
+    case EMPTY_BACK_URL:
+      return { url: "" };
     default:
       return state;
   }
@@ -151,7 +165,12 @@ export const selectBarber = (state = { id: "" }, action) => {
         facilityId: action.facilityId,
         reset: Math.random(),
       };
-
+    case EMPTY_SELECT_BARBER:
+      return {
+        id: "",
+        facilityId: action.facilityId,
+        reset: Math.random(),
+      };
     default:
       return state;
   }

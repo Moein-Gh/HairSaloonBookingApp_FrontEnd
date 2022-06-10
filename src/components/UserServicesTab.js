@@ -92,7 +92,6 @@ export default function UserServicesTab({ userId, serviceType }) {
     if (!userId) {
       dispatch(getUsersServices());
     } else {
-      console.log(userId);
       dispatch(getServicesByUserId(userId));
     }
   }, [dispatch, csReset, userId, deleteReset]);

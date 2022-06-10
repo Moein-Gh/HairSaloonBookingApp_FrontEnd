@@ -67,14 +67,9 @@ export default function BarberServicesTab({
   });
   const { NABarberId } = NABarberInfo;
 
-  const selectBarber = useSelector((state) => {
-    return state.selectBarber;
-  });
-  const { id, facilityId: barberFacilityId, reset: barberReset } = selectBarber;
-
   useEffect(() => {
-    if (NABarberId || id) {
-      dispatch(getNABarbersServices(NABarberId || id));
+    if (NABarberId) {
+      dispatch(getNABarbersServices(NABarberId));
     }
   }, [dispatch, NABarberId]);
 

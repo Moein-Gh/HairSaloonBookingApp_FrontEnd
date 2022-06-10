@@ -1,12 +1,12 @@
-import * as React from "react";
-import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import ProfileInfo from "../components/ProfileInfo";
-import { useNavigate } from "react-router-dom";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import Typography from "@mui/material/Typography";
+import PropTypes from "prop-types";
+import * as React from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import ProfileInfo from "../components/ProfileInfo";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -70,16 +70,10 @@ export default function UserprofileScreen() {
           scrollButtons
         >
           <Tab label="اطلاعات شخصی" {...a11yProps(0)} />
-
-          <Tab label="الگو ها" {...a11yProps(1)} />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
+      <TabPanel value={value} index={0} className="profileInfoTabPanel">
         <ProfileInfo />
-      </TabPanel>
-
-      <TabPanel value={value} index={1}>
-        Item Three
       </TabPanel>
     </Box>
   );

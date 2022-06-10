@@ -1,14 +1,13 @@
-import { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Form, Button, Row, Col, Container } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Button, Container, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import Message from "../components/Message.js";
-import Loader from "../components/Loader.js";
 import { addBarber, getNormalUsers } from "../actions/userActions";
 import FormContainer from "../components/FormContainer.js";
+import Loader from "../components/Loader.js";
+import Message from "../components/Message.js";
 
-import React from "react";
 import { Select } from "antd";
 
 const AddBarberScreen = () => {
@@ -105,7 +104,7 @@ const AddBarberScreen = () => {
             }}
           >
             {" "}
-            انصراف
+            بازگشت
           </Button>
         </Form>
       </FormContainer>

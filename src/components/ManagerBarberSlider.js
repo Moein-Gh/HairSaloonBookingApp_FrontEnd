@@ -1,14 +1,12 @@
-import React, { useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper";
-import "swiper/css/bundle";
-import Loader from "./Loader";
+import { useEffect } from "react";
 import { Row } from "react-bootstrap";
-import { Pagination } from "swiper";
-import ManagerBarberCard from "./ManagerBarberCard";
 import { useDispatch, useSelector } from "react-redux";
+import { Autoplay, Pagination } from "swiper";
+import "swiper/css/bundle";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { getFacilitysEmployees } from "../actions/facilityActions";
-import { REMOVE_BARBER_RESET } from "../constants/userConstants";
+import Loader from "./Loader";
+import ManagerBarberCard from "./ManagerBarberCard";
 
 let barbers = [
   {
@@ -71,7 +69,7 @@ export default function ManagerBarberSlider() {
   return (
     <>
       {!loading ? (
-        employees.length ? (
+        employees && employees.length ? (
           <Row className=" mt-3 text-align-center">
             <Row className="cardSliderContainer">
               <Swiper

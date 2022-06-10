@@ -37,7 +37,7 @@ const NewAppointmentSummary = ({
 
   return (
     <>
-      {user && facility ? (
+      {user && facility && selectedDay ? (
         <Row className="defaultContainer">
           <h4>آرایشگاه {facility.name}</h4>
           <h4>آرایشگر {user.name}</h4>

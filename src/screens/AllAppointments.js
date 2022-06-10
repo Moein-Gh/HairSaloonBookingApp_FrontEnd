@@ -1,11 +1,16 @@
-import React, { useEffect } from "react";
-import { Col } from "react-bootstrap";
-import { Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { Col, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import {
+  getBarberAppointments,
+  getUserAppointments,
+} from "../actions/appointmentActions";
 import AllAppointmentHistory from "../components/AllAppointmentHistory";
 
-const AllAppointment = () => {
+const AllAppointments = ({ role }) => {
+  let [appointments, setAppointments] = useState([]);
+  const dispatch = useDispatch();
   let navigate = useNavigate();
 
   const userLogin = useSelector((state) => {
@@ -13,9 +18,31 @@ const AllAppointment = () => {
   });
   const { loading, error, userInfo } = userLogin;
 
+  const appointmentUserList = useSelector((state) => {
+    return state.appointmentUserList;
+  });
+  let { loading: userAppointmentsLoading, appointments: userAppointments } =
+    appointmentUserList;
+  const appointmentBarberList = useSelector((state) => {
+    return state.appointmentBarberList;
+  });
+  let { loading: barberAppointmentsLoading, appointments: barberAppointments } =
+    appointmentBarberList;
   useEffect(() => {
     if (!userInfo) navigate("/login");
-  }, [userInfo]);
+    if (role === "user") {
+      dispatch(getUserAppointments());
+      if (typeof userAppointments !== "undefined") {
+        setAppointments(userAppointments);
+      }
+    } else if (role === "barber") {
+      dispatch(getBarberAppointments());
+      if (typeof barberAppointments !== "undefined") {
+        setAppointments(barberAppointments);
+      }
+    }
+  }, [userInfo, role]);
+
   return (
     <>
       <Row className="defaultContainer text-align-center">
@@ -95,10 +122,10 @@ const AllAppointment = () => {
         </Col>
       </Row>
       <Row>
-        <AllAppointmentHistory />
+        <AllAppointmentHistory appointments={appointments} />
       </Row>
     </>
   );
 };
 
-export default AllAppointment;
+export default AllAppointments;

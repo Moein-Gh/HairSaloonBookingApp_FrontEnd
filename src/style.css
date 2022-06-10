@@ -39,7 +39,7 @@ h1 {
   background-color: #d2e9e1;
   box-shadow: var(--shadow);
   padding: 7px 5px;
-  margin: 5px 0px;
+  /* margin: 5px 0px; */
   transition: all .15s ease-in-out;
   color: black;
 }
@@ -47,7 +47,7 @@ h1 {
   background-color: rgb(248, 170, 170);
 }
 .btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   color: black;
   /* background-color: black; */
 }
@@ -90,10 +90,9 @@ li {
 }
 .defaultContainer {
   background-color: white;
-  padding: 2rem;
+  padding:  1.5rem 1.5rem;
   border-radius: 10px;
   box-shadow: var(--shadow);
-  margin-bottom: 1rem;
 }
 
 .row {
@@ -399,9 +398,18 @@ header {
 .appointmentTextContainer {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items:center;
   justify-content: space-around;
 }
+.appointmentText{
+  font-size: .9rem
+}
+.appointmentHistory{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
 
 /* -- single appointment Row*/
 
@@ -524,11 +532,11 @@ hr {
 /* profile info section */
 
 .profileImageContainer {
-  width: 70%;
+  width: 100%;
   margin: auto;
 }
 .profileImage {
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: rgb(158 209 194) 0px 0px 0px 5px;
 }
 
@@ -537,15 +545,30 @@ hr {
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  margin: .5rem 0rem;
 }
 .profileUserDataContainer {
-  padding-right: 15%;
+  padding: 5px;
+  margin: 1rem 0rem 0rem 0rem;
+}
+.profileInfoValueContainer{
+  border-radius: 7px;
+  text-align: center;
+  padding: .6rem .5rem;
+  background-color: #c1dbb898;
+}
+.profileInfoKeyContainer{
+  border-radius: 7px;
+  text-align: center;
 }
 .profileInfoKey {
-  font-size: 1.4rem;
+  color: #6200ff91;
+  font-size: 1.3rem;
+  display: inline;
 }
 .profileInfoValue {
-  font-size: 1.2rem;
+  font-size: 1rem;
+  text-align: left;
 }
 .profileUserDataButtonContainer {
   align-items: center;
@@ -690,3 +713,87 @@ hr {
 }
 
 /* -- barber dashboard */
+
+
+/*  media queries */
+@media only screen and (min-width: 900px) and (max-width: 1200px) {
+  .mainColumn {
+    padding: 1rem .5rem;
+  }
+  .defaultContainer {
+    padding:  1rem 1rem;
+  }
+  .appointmentText{
+    font-size: .8rem
+  }
+  .appointmentButton{
+    font-size: .8rem !important
+  }
+  .profileInfoTabPanel .css-19kzrtu{
+    padding: 1rem;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 899px) {
+  .mainColumn {
+    padding: 1rem .5rem;
+  }
+  .defaultContainer {
+    padding:  1rem 1rem;
+  }
+  .appointmentText{
+    font-size: .7rem
+  }
+  .appointmentButton{
+    font-size: .7rem !important
+  }
+  .profileInfoTabPanel .css-19kzrtu{
+    padding: 0.8rem;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .mainColumn {
+    padding: 1rem .5rem;
+  }
+  .defaultContainer {
+    padding:  1rem 1rem;
+  }
+  .appointmentText{
+    font-size: .75rem
+  }
+  .appointmentButton{
+    font-size: .75rem !important
+  }
+  .profileInfoTabPanel .css-19kzrtu{
+    padding: .5rem;
+  }
+
+  .appointmentHistory{
+    margin-top: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+@media only screen and (min-width: 0px) and (max-width: 575px) {
+  .mainColumn {
+    padding: 1rem .5rem;
+  }
+  .defaultContainer {
+    padding:  1rem 1rem;
+  }
+  .appointmentText{
+    font-size: .7rem
+  }
+  .appointmentButton{
+    font-size: .6rem !important
+  }
+  .profileInfoTabPanel .css-19kzrtu{
+    padding: .3rem;
+  }
+  .appointmentHistory{
+    margin-top: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+

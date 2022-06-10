@@ -5,10 +5,11 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import BarberOverview from "../components/BarberOverview";
-import AppointmentHistory from "../components/AppointmentHistory";
+import SubmittedAppointments from "../components/SubmittedAppointments";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ServicesManager from "../components/ServicesManager";
+import Appointments from "../components/Appointments";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -72,10 +73,8 @@ export default function BarberDashboard() {
           scrollButtons
         >
           <Tab label="داشبورد" {...a11yProps(0)} />
-
-          <Tab label="اعلان ها" {...a11yProps(1)} />
-          <Tab label="نوبت ها" {...a11yProps(2)} />
-          <Tab label="خدمت ها" {...a11yProps(3)} />
+          <Tab label="نوبت ها" {...a11yProps(1)} />
+          <Tab label="خدمت ها" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
@@ -83,14 +82,11 @@ export default function BarberDashboard() {
       </TabPanel>
 
       <TabPanel value={value} index={1}>
-        notification
+        <SubmittedAppointments />
+        <Appointments />
       </TabPanel>
 
       <TabPanel value={value} index={2}>
-        <AppointmentHistory />
-      </TabPanel>
-
-      <TabPanel value={value} index={3}>
         <ServicesManager />
       </TabPanel>
     </Box>

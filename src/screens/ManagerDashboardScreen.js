@@ -9,6 +9,7 @@ import AppointmentHistory from "../components/AppointmentHistory";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import BarberManagement from "../components/BarberManagement";
+import AddCategory from "../components/AddCategory";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -74,8 +75,7 @@ export default function ManagerDashboardScreen() {
           <Tab label="داشبورد" {...a11yProps(0)} />
 
           <Tab label="آرایشگر ها" {...a11yProps(1)} />
-          <Tab label="نوبت ها" {...a11yProps(2)} />
-          <Tab label="خدمت ها" {...a11yProps(3)} />
+          <Tab label="دسته بندی ها" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
@@ -87,11 +87,7 @@ export default function ManagerDashboardScreen() {
       </TabPanel>
 
       <TabPanel value={value} index={2}>
-        <AppointmentHistory />
-      </TabPanel>
-
-      <TabPanel value={value} index={3}>
-        services
+        <AddCategory />
       </TabPanel>
     </Box>
   );

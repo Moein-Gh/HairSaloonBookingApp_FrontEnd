@@ -11,14 +11,13 @@ const ChooseTime = ({ possibleTimes, selectedDay, setSelectedTime }) => {
   };
   useEffect(() => {
     setValue(true);
-    console.log("text");
-  }, [possibleTimes]);
+  }, [possibleTimes, selectedDay]);
 
   return (
     <>
-      {possibleTimes.length !== 0 && (
-        <Row className="defaultContainer mt-4">
-          <h5>زمان های موجود</h5>
+      <Row className="defaultContainer mt-4">
+        <h5>زمان های موجود</h5>
+        {possibleTimes !== null && possibleTimes.length !== 0 ? (
           <Radio.Group
             onChange={(e) => {
               radioOnChange(e);
@@ -42,8 +41,12 @@ const ChooseTime = ({ possibleTimes, selectedDay, setSelectedTime }) => {
               })}
             </Space>
           </Radio.Group>
-        </Row>
-      )}
+        ) : possibleTimes === null ? (
+          <h4>برای نمایش لیست زمان های موجود روی گرفتن زمان ها کلیک کنید</h4>
+        ) : (
+          <h4>برای آرایشگر مورد نظر زمانی یافت نشد</h4>
+        )}
+      </Row>
     </>
   );
 };

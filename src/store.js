@@ -1,52 +1,63 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
 import {
-  userLoginReducer,
-  userDetailReducer,
-  userListReducer,
-  usersNamesReducer,
-  userRegisterReducer,
-  normalUserListReducer,
+  facilityBarbersReducer,
+  facilityDetailReducer,
+  facilityEmployeesReducer,
+  facilityListReducer,
+  femaleFacilityListReducer,
+  maleFacilityListReducer,
+} from "./reducers/facilityReducers";
+import {
   addBarberReducer,
+  backUrlReducer,
+  normalUserListReducer,
   removeBarberReducer,
   selectBarber,
+  userDetailReducer,
+  userListReducer,
+  userLoginReducer,
+  userRegisterReducer,
+  usersNamesReducer,
 } from "./reducers/userReducers";
-import {
-  facilityDetailReducer,
-  facilityListReducer,
-  maleFacilityListReducer,
-  femaleFacilityListReducer,
-  facilityEmployeesReducer,
-  facilityBarbersReducer,
-} from "./reducers/facilityReducers";
 
-import { categoryListReducer } from "./reducers/categoryReducers";
 import {
-  serviceUserReducer,
+  categoryListReducer,
+  createCategoryReducer,
+} from "./reducers/categoryReducers";
+import {
   createServiceReducer,
   deleteServiceReducer,
-  serviceBarberReducer,
   editServiceInfoReducer,
   editServiceReducer,
+  serviceBarberReducer,
   serviceNABarberReducer,
+  serviceUserReducer,
 } from "./reducers/serviceReducers";
 
 import {
+  appointmentBarberListReducer,
+  appointmentDetailReducer,
+  appointmentSubmittedListReducer,
+  appointmentTodayListForBarberReducer,
+  appointmentUserListReducer,
+  approveAppointmentReducer,
+  createAppointmentReducer,
   NABarberInfoReducer,
   NAFacilityInfoReducer,
-  appointmentDetailReducer,
-  appointmentListReducer,
   possibleTimesReducer,
-  createAppointmentReducer,
+  rejectAppointmentReducer,
 } from "./reducers/appointmentReducers";
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
+  backUrl: backUrlReducer,
   userDetail: userDetailReducer,
   userList: userListReducer,
   usersNames: usersNamesReducer,
   userRegister: userRegisterReducer,
+  appointmentUserList: appointmentUserListReducer,
   facilityDetail: facilityDetailReducer,
   facilityList: facilityListReducer,
   maleFacilityList: maleFacilityListReducer,
@@ -68,9 +79,14 @@ const reducer = combineReducers({
   NABarberInfo: NABarberInfoReducer,
   NAFacilityInfo: NAFacilityInfoReducer,
   appointmentDetail: appointmentDetailReducer,
-  appointmentList: appointmentListReducer,
+  appointmentTodayListForBarber: appointmentTodayListForBarberReducer,
+  appointmentBarberList: appointmentBarberListReducer,
+  appointmentSubmittedList: appointmentSubmittedListReducer,
   possibleTimes: possibleTimesReducer,
   createAppointment: createAppointmentReducer,
+  editAppointmentApprove: approveAppointmentReducer,
+  editAppointmentReject: rejectAppointmentReducer,
+  createCategory: createCategoryReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
