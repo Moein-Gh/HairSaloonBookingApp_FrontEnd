@@ -1,6 +1,6 @@
 const footer = () => {
   return (
-    <div className="container-fluid mt-5">
+    <div className="container-fluid mt-5 footer">
       <div className="card bg-white">
         <div>سینوا</div>
         <div className="divider mb-4"> </div>

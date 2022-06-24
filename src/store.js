@@ -11,7 +11,6 @@ import {
 } from "./reducers/facilityReducers";
 import {
   addBarberReducer,
-  backUrlReducer,
   normalUserListReducer,
   removeBarberReducer,
   selectBarber,
@@ -52,7 +51,6 @@ import {
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
-  backUrl: backUrlReducer,
   userDetail: userDetailReducer,
   userList: userListReducer,
   usersNames: usersNamesReducer,

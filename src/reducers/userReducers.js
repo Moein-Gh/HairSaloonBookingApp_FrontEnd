@@ -3,7 +3,6 @@ import {
   ADD_BARBER_REQUEST,
   ADD_BARBER_RESET,
   ADD_BARBER_SUCCESS,
-  EMPTY_BACK_URL,
   EMPTY_SELECT_BARBER,
   NORMAL_USER_LIST_FAIL,
   NORMAL_USER_LIST_REQUEST,
@@ -13,7 +12,6 @@ import {
   REMOVE_BARBER_RESET,
   REMOVE_BARBER_SUCCESS,
   SELECT_BARBER,
-  SET_BACK_URL,
   USER_DETAIL_FAIL,
   USER_DETAIL_REQUEST,
   USER_DETAIL_SUCCESS,
@@ -42,17 +40,6 @@ export const userLoginReducer = (state = {}, action) => {
       return { loading: false, error: action.payload };
     case USER_LOGOUT:
       return {};
-    default:
-      return state;
-  }
-};
-
-export const backUrlReducer = (state = {}, action) => {
-  switch (action.type) {
-    case SET_BACK_URL:
-      return { url: action.url };
-    case EMPTY_BACK_URL:
-      return { url: "" };
     default:
       return state;
   }

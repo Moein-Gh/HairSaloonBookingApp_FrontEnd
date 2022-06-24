@@ -1,14 +1,13 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CardSlider from "../components/CardSlider";
+import { useNavigate } from "react-router-dom";
+import { getUserDetail } from "../actions/userActions";
 import Categories from "../components/Categories";
 import Hero from "../components/Hero";
-import MenFacilitiesSlider from "../components/MenFacilitiesSlider";
-import WomenFacilitiesSlider from "../components/WomenFacilitiesSlider";
-import NearestFacilitiesSlider from "../components/NearestFacilitiesSlider";
-import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
-import { getUserDetail } from "../actions/userActions";
+import MenFacilitiesSlider from "../components/MenFacilitiesSlider";
+import NearestFacilitiesSlider from "../components/NearestFacilitiesSlider";
+import WomenFacilitiesSlider from "../components/WomenFacilitiesSlider";
 
 const HomeScreen = () => {
   let navigate = useNavigate();

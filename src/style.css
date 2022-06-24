@@ -26,7 +26,7 @@ h1 {
   width: 100%;
 }
 .h-100 {
-  height: 100%;
+  height: 100% !important;
 }
 .text-align-center {
   text-align: center;
@@ -35,7 +35,8 @@ h1 {
   margin: 0 !important;
 }
 .btn {
-  border-radius: 5px;
+  display: inline;
+  border-radius: 3px;
   background-color: #d2e9e1;
   box-shadow: var(--shadow);
   padding: 7px 5px;
@@ -136,6 +137,11 @@ h6 {
   max-width: 1400px;
   margin: auto;
   padding: 2rem 1rem;
+  min-height: 680px;
+}
+.sectionTitle{
+text-align: center;
+margin: .5rem auto 1rem auto !important;
 }
 
 /* header */
@@ -160,6 +166,12 @@ header {
 }
 .headerMiddle h3 {
   margin: 0;
+}
+
+.heroBookingContainer{
+  padding: 1rem;
+  background-color: #8fc0ad;
+  border-radius: 5px;
 }
 
 /* -- header */
@@ -243,6 +255,7 @@ header {
 /* navigation  */
 .navigation {
   height: 100%;
+  margin-top: .5rem;
 }
 .navLinkContainer {
   padding: 7px;
@@ -296,7 +309,7 @@ header {
 /* carousel */
 
 .carouselContainer {
-  border-radius: 20px;
+  border-radius: 10px;
   height: 500px;
   overflow: hidden;
   box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
@@ -361,13 +374,13 @@ header {
 
 .categoryTextContainer {
   background-color: var(--light-gold);
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 1rem;
 }
 
 .categoryText {
   line-height: normal;
-  font-size: 2.2rem;
+  font-size: 1.3rem;
   align-items: center;
   text-align: center;
 }
@@ -477,7 +490,7 @@ hr {
 .facilityCardContainer {
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
     rgb(209, 213, 219) 0px 0px 0px 1px inset;
-  border-radius: 20px;
+  border-radius:10px;
   width: 100%;
   text-align: center;
   margin-top: 2rem;
@@ -492,7 +505,7 @@ hr {
   background-size: cover;
   background-position: center;
   position: relative;
-  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+  
 }
 .imageTag {
   position: absolute;
@@ -516,16 +529,21 @@ hr {
   overflow-x: hidden !important;
 }
 .facilityCardButton .btn {
-  width: 80%;
-  padding: 4px;
+  display: inline;
+background-color: rgb(218 235 235);
+box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  padding: .5rem .4rem;
   font-size: 12px;
 }
 .facilityCardHr {
-  margin-left: auto;
-  margin-right: auto;
+margin: .5rem auto;
   width: 80%;
   height: 1.5px !important;
   color: #0f4668;
+}
+.facilityCardDistance{
+  justify-content: center;
+  align-items: center;
 }
 /* -- shopCard */
 
@@ -562,8 +580,8 @@ hr {
   text-align: center;
 }
 .profileInfoKey {
-  color: #6200ff91;
-  font-size: 1.3rem;
+  color: #ff000091;
+  font-size: 1rem;
   display: inline;
 }
 .profileInfoValue {
@@ -609,6 +627,19 @@ hr {
 .cardSliderContainer .swiper {
   padding-top: 1rem !important;
   padding-bottom: 3rem !important;
+}
+
+.facilityInfoKey{
+  color: #ff000091;
+  font-size: 1rem;
+  display: inline;
+
+}
+.facilityInfoValue{
+  font-size: 1rem;
+  text-align: left;
+  text-align: left;
+
 }
 /* -- barberShop */
 
@@ -713,6 +744,65 @@ hr {
 }
 
 /* -- barber dashboard */
+
+
+/* appointment detail  */
+
+
+.appointmentDetailContainer{
+ 
+}
+
+.appointmentDetailColumn{
+  padding: 1rem;
+
+}
+
+.appointmentDetail{
+  flex-grow: 1;
+  padding: 5px;
+}
+
+.appointmentServices{
+height: 100%;
+  padding: 5px;
+}
+
+.serviceRow{
+  padding-right: 1rem;
+  padding-top: 1rem ;
+  padding-bottom: 1rem ;
+  background-color: rgb(219, 240, 207);
+  border-radius: 10px;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+.serviceTopRow{
+  padding-right: 1rem;
+  padding-top: 1rem ;
+  padding-bottom: 1rem ;
+  border-radius: 10px;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+.serviceTotalRow{
+  padding-right: 1rem;
+  padding-top: 1rem ;
+  padding-bottom: 1rem ;
+  background-color: rgb(221, 243, 241);
+  border-radius: 10px;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+.appointmentStatusButtonContainer{
+  text-align: left;
+}
+.appointmentStatusButton{
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: .5rem;
+}
+/* -- appointment detail  */
 
 
 /*  media queries */

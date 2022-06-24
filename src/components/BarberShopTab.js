@@ -1,10 +1,9 @@
-import * as React from "react";
-import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import ProfileInfo from "./ProfileInfo";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import Typography from "@mui/material/Typography";
+import PropTypes from "prop-types";
+import * as React from "react";
 import BarberSlider from "./BarberSlider";
 
 function TabPanel(props) {
@@ -58,16 +57,10 @@ export default function BarberShopTab() {
           scrollButtons
         >
           <Tab label="آرایشگران" {...a11yProps(0)} />
-
-          <Tab label="گالری" {...a11yProps(1)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0} className="barberSliderTab">
         <BarberSlider />
-      </TabPanel>
-
-      <TabPanel value={value} index={1}>
-        <h5>محتوایی جهت نمایش وجود ندارد</h5>
       </TabPanel>
     </Box>
   );

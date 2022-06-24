@@ -1,5 +1,4 @@
-import React from "react";
-import { Row, Col, Image } from "react-bootstrap";
+import { Col, Image, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";

@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Col, Row, Form, Button, Container } from "react-bootstrap";
+import { Select } from "antd";
+import { useEffect, useState } from "react";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import Loader from "./Loader";
-import { Link } from "react-router-dom";
-import FormContainer from "../components/FormContainer.js";
-import { Select } from "antd";
 import { getAllCategories } from "../actions/categoryActions";
 import { createNewService, updateService } from "../actions/serviceActions";
+import FormContainer from "../components/FormContainer.js";
 import { EMPTY_EDIT_SERVICE_INFO } from "../constants/serviceConstants";
+import Loader from "./Loader";
 import UserServicesTab from "./UserServicesTab";
 
 const ServicesManager = () => {

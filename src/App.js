@@ -1,24 +1,25 @@
+import { Col, Row } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "./bootstrap.min.css";
-import "./style.css";
-import React from "react";
-import HomeScreen from "./screens/HomeScreen.js";
-import { Col, Row } from "react-bootstrap";
-import Header from "./components/Header";
 import Footer from "./components/Footer";
-import BarberShopScreen from "./screens/BarberShopScreen";
-import UserprofileScreen from "./screens/UserprofileScreen";
-import NewAppointmentScreen from "./screens/NewAppointmentScreen";
+import Header from "./components/Header";
 import ScrollToTop from "./components/ScrollToTop";
-import BarberShops from "./screens/BarberShops";
-import BarberDashboard from "./screens/BarberDashboard";
-import LoginScreen from "./screens/LoginScreen";
-import RegisterScreen from "./screens/RegisterScreen";
-import ManagerDashboardScreen from "./screens/ManagerDashboardScreen";
 import AddBarberScreen from "./screens/AddBarberScreen";
+import AllAppointmentsForBarber from "./screens/AllAppointmentsForBarber";
+import AllAppointmentsForUser from "./screens/AllAppointmentsForUser";
 import AppointmentScreen from "./screens/AppointmentScreen";
-import AllAppointments from "./screens/AllAppointments";
+import BarberDashboard from "./screens/BarberDashboard";
+import BarberShops from "./screens/BarberShops";
+import BarberShopScreen from "./screens/BarberShopScreen";
+import HomeScreen from "./screens/HomeScreen.js";
+import LoginScreen from "./screens/LoginScreen";
+import ManagerDashboardScreen from "./screens/ManagerDashboardScreen";
+import NewAppointmentScreen from "./screens/NewAppointmentScreen";
+import RegisterScreen from "./screens/RegisterScreen";
+import UserprofileScreen from "./screens/UserprofileScreen";
+import "./style.css";
+
 function App() {
   return (
     <Router>
@@ -55,12 +56,12 @@ function App() {
                   <Route
                     path="/allUserAppointments"
                     exact
-                    element={<AllAppointments role="user" />}
+                    element={<AllAppointmentsForUser />}
                   />
                   <Route
                     path="/allBarberAppointments"
                     exact
-                    element={<AllAppointments role="user" />}
+                    element={<AllAppointmentsForBarber />}
                   />
                   <Route
                     path="/UserprofileScreen"

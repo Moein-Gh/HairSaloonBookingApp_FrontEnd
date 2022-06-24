@@ -1,5 +1,4 @@
-import React from "react";
-import { Row, Col, Image } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const ShopCard = ({ facility }) => {
@@ -28,20 +27,12 @@ const ShopCard = ({ facility }) => {
               <h5>{facility.name}</h5>
             </div>
             <hr className="facilityCardHr" />
-            <Row>
-              <Col xs={6}>
-                <h6>{facility.location}</h6>
-              </Col>
-              <Col xs={6}>
+            <Row className="pb-2">
+              <Col
+                xs={6}
+                className="d-flex justify-content-center align-items-center"
+              >
                 <h6>{facility.distance ? facility.distance : "1 کیلومتر"}</h6>
-              </Col>
-            </Row>
-
-            <Row className="mb-2">
-              <Col xs={6}>
-                <Link to={"/"} className="facilityCardButton">
-                  <button className="btn">رزرو نوبت</button>
-                </Link>
               </Col>
               <Col xs={6}>
                 <Link

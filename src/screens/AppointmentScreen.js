@@ -1,19 +1,14 @@
-import React, { useEffect } from "react";
-import { Image } from "react-bootstrap";
-import { Col } from "react-bootstrap";
-import { Row } from "react-bootstrap";
+import { useEffect } from "react";
+import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   approveAppointment,
   getAppointmentDetail,
-  getAppointmentsBarbers,
   rejectAppointment,
 } from "../actions/appointmentActions";
-import BarberServicesTab from "../components/BarberServicesTab";
-import BarberShopTab from "../components/BarberShopTab";
 import Loader from "../components/Loader";
+import { getFromLocalStorage } from "../utils";
 
 const AppointmentScreen = () => {
   let dispatch = useDispatch();
@@ -26,10 +21,7 @@ const AppointmentScreen = () => {
   });
   const { loading, error, userInfo } = userLogin;
 
-  const backUrl = useSelector((state) => {
-    return state.backUrl;
-  });
-  const { url } = backUrl;
+  const url = getFromLocalStorage("backUrl");
 
   const editAppointmentApprove = useSelector((state) => {
     return state.editAppointmentApprove;
@@ -60,6 +52,7 @@ const AppointmentScreen = () => {
     appointment,
   } = appointmentDetail;
 
+  if (appointment) console.log(appointment);
   const getPriceSum = (services) => {
     let sum = 0;
     services.forEach((service) => {
@@ -88,136 +81,226 @@ const AppointmentScreen = () => {
 
   return (
     <>
-      <Row className="defaultContainer">
-        <Row className="barberShopHeroContainer">
+      <Row>
+        <Row className="appointmentDetailContainer">
           <Col>
             {appointmentDetailLoading ? (
               <Loader />
             ) : appointment ? (
               <Row>
-                <Col xs={12} className="barberShopImageContainer">
-                  <div>
-                    <h4>
-                      {appointment.facility && appointment.facility.name
-                        ? appointment.facility.name
-                        : "نا مشخص"}
-                    </h4>
-                    <h4>
-                      {appointment.user && appointment.user.name
-                        ? appointment.user.name
-                        : "نا مشخص"}
-                    </h4>
-                    <h4>
-                      {appointment.barber && appointment.barber.name
-                        ? appointment.barber.name
-                        : "نا مشخص"}
-                    </h4>
-                    <h4>
-                      {appointment.startTime
-                        ? appointment.startTime
-                        : "نا مشخص"}
-                    </h4>
-                    <h4>
-                      {appointment.endTime ? appointment.endTime : "نا مشخص"}
-                    </h4>
-                    <h4>
-                      {appointment.status
-                        ? appointment.status === "submitted"
-                          ? "در انتطار بررسی"
-                          : appointment.status === "approved"
-                          ? "تایید شده"
-                          : appointment.status === "rejected"
-                          ? "رد شده"
-                          : "نا مشخص"
-                        : "نا مشخص"}
-                    </h4>
-                  </div>
+                <Col md={7} className="appointmentDetail">
+                  <Row className={"defaultContainer"}>
+                    <h5 className="sectionTitle">اطلاعات نوبت</h5>
+                    <Col
+                      md={6}
+                      style={{ borderLeft: ".5px solid lightgrey" }}
+                      className={"appointmentDetailColumn"}
+                    >
+                      <Col>
+                        <Row className="profileInfoRow">
+                          <Col>
+                            <h6 className="profileInfoKey"> نام آرایشگاه</h6>{" "}
+                            &nbsp;
+                          </Col>
+                          <Col>
+                            <div className="profileInfoValue">
+                              {appointment.facility && appointment.facility.name
+                                ? appointment.facility.name
+                                : "نا مشخص"}
+                            </div>
+                          </Col>
+                        </Row>
+                      </Col>
+                      <Col>
+                        <Row className="profileInfoRow">
+                          <Col>
+                            <h6 className="profileInfoKey"> نام نوبت گیرنده</h6>{" "}
+                            &nbsp;
+                          </Col>
+                          <Col>
+                            <div className="profileInfoValue">
+                              {appointment.user && appointment.user.name
+                                ? appointment.user.name
+                                : "نا مشخص"}
+                            </div>
+                          </Col>
+                        </Row>
+                      </Col>
+                      <Col>
+                        <Row className="profileInfoRow">
+                          <Col>
+                            <h6 className="profileInfoKey"> نام آرایشگر</h6>{" "}
+                            &nbsp;
+                          </Col>
+                          <Col>
+                            <div className="profileInfoValue">
+                              {appointment.barber && appointment.barber.name
+                                ? appointment.barber.name
+                                : "نا مشخص"}
+                            </div>
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Col>
+                    <Col md={6} className={"appointmentDetailColumn"}>
+                      <Col>
+                        <Row className="profileInfoRow">
+                          <Col>
+                            <h6 className="profileInfoKey"> زمان شروع نوبت</h6>{" "}
+                            &nbsp;
+                          </Col>
+                          <Col>
+                            <div className="profileInfoValue">
+                              {appointment.startTime
+                                ? appointment.startTime
+                                : "نا مشخص"}
+                            </div>
+                          </Col>
+                        </Row>
+                      </Col>
+                      <Col>
+                        <Row className="profileInfoRow">
+                          <Col>
+                            <h6 className="profileInfoKey"> زمان پایان نوبت</h6>{" "}
+                            &nbsp;
+                          </Col>
+                          <Col>
+                            <div className="profileInfoValue">
+                              {appointment.endTime
+                                ? appointment.endTime
+                                : "نا مشخص"}
+                            </div>
+                          </Col>
+                        </Row>
+                      </Col>
+                      <Col>
+                        <Row className="profileInfoRow">
+                          <Col>
+                            <h6 className="profileInfoKey">وضعیت نوبت</h6>{" "}
+                            &nbsp;
+                          </Col>
+                          <Col>
+                            <div className="profileInfoValue">
+                              {appointment.status
+                                ? appointment.status === "submitted"
+                                  ? "در انتطار بررسی"
+                                  : appointment.status === "approved"
+                                  ? "تایید شده"
+                                  : appointment.status === "rejected"
+                                  ? "رد شده"
+                                  : "نا مشخص"
+                                : "نا مشخص"}
+                            </div>
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Col>
+                    <Row>
+                      <div className="appointmentStatusButtonContainer">
+                        {appointment.status === "submitted" && (
+                          <div>
+                            <button
+                              className="btn appointmentStatusButton"
+                              onClick={() => {
+                                dispatch(approveAppointment(appointment._id));
+                              }}
+                            >
+                              تایید نوبت
+                            </button>
+                            <button
+                              className="btn appointmentStatusButton"
+                              style={{ backgroundColor: "#ff8f8f" }}
+                              onClick={() => {
+                                dispatch(rejectAppointment(appointment._id));
+                              }}
+                            >
+                              رد نوبت
+                            </button>
+                          </div>
+                        )}
+                        {url && (
+                          <Link to={url} key={url}>
+                            <button
+                              className="btn appointmentStatusButton"
+                              style={{ backgroundColor: "rgb(212 202 150)" }}
+                            >
+                              بازگشت
+                            </button>
+                          </Link>
+                        )}
+                      </div>
+                    </Row>
+                  </Row>
                 </Col>
-                <Col>
+                <Col md={5} className="appointmentServices">
                   {appointment.services && appointment.services.length !== 0 && (
                     <Row className="defaultContainer">
-                      <Col>
-                        <Row>
-                          <Col xs={8}>
-                            <h5>خدمات انتخاب شده</h5>
-                            {appointment.services.map((service) => {
-                              return (
+                      <h5 className="sectionTitle">خدمات نوبت</h5>
+
+                      <Row className="serviceTopRow">
+                        <Col xs={6}>
+                          <h6>خدمات</h6>
+                        </Col>
+                        <Col xs={3}>
+                          <h6 className="text-align-center">مدت زمان</h6>
+                        </Col>
+                        <Col xs={3}>
+                          <h6 className="text-align-center">مبلغ</h6>
+                        </Col>
+                      </Row>
+                      <hr />
+                      <Row>
+                        {appointment.services.map((service) => {
+                          return (
+                            <Row className="serviceRow">
+                              <Col
+                                xs={6}
+                                // style={{ paddingLeft: "1rem !important" }}
+                              >
                                 <h6 key={Math.random()}>{service.title}</h6>
-                              );
-                            })}
-                          </Col>
-                          <Col xs={2}>
-                            <h5>مدت زمان</h5>
-                            {appointment.services.map((service) => {
-                              return (
-                                <h6 key={Math.random()}>
+                              </Col>
+                              <Col xs={3}>
+                                <h6
+                                  className="text-align-center"
+                                  key={Math.random()}
+                                >
                                   {service.time} دقیقه
                                 </h6>
-                              );
-                            })}
-                          </Col>
-                          <Col xs={2}>
-                            <h5>مبلغ</h5>
-                            {appointment.services.map((service) => {
-                              return (
-                                <h6 key={Math.random()}>
+                              </Col>
+                              <Col xs={3}>
+                                <h6
+                                  className="text-align-center"
+                                  key={Math.random()}
+                                >
                                   {service.price.toLocaleString()} تومان
                                 </h6>
-                              );
-                            })}
-                          </Col>
-                        </Row>
-                        <hr />
-                        <Row>
-                          <Col xs={8}>
-                            <h5>مجموع</h5>
-                          </Col>
-                          <Col xs={2}>
-                            <h5>
-                              {getDurationSum(appointment.services)} دقیقه
-                            </h5>
-                          </Col>
-                          <Col xs={2}>
-                            <h5>
-                              {getPriceSum(
-                                appointment.services
-                              ).toLocaleString()}{" "}
-                              تومان
-                            </h5>
-                          </Col>
-                        </Row>
-                        <br />
-                      </Col>
+                              </Col>
+                            </Row>
+                          );
+                        })}
+                      </Row>
+
+                      <br />
+                      <Row className="serviceTotalRow">
+                        <Col xs={6}>
+                          <h6>مجموع</h6>
+                        </Col>
+                        <Col xs={3}>
+                          <h6 className="text-align-center">
+                            {getDurationSum(appointment.services)} دقیقه
+                          </h6>
+                        </Col>
+                        <Col xs={3}>
+                          <h6 className="text-align-center">
+                            {getPriceSum(appointment.services).toLocaleString()}{" "}
+                            تومان
+                          </h6>
+                        </Col>
+                      </Row>
+                      <br />
                     </Row>
                   )}
                 </Col>
-                {appointment.status === "submitted" && (
-                  <Row>
-                    <div>
-                      <button
-                        className="btn"
-                        onClick={() => {
-                          dispatch(approveAppointment(appointment._id));
-                        }}
-                      >
-                        تایید
-                      </button>
-                    </div>
-                    <div>
-                      <button
-                        className="btn"
-                        onClick={() => {
-                          dispatch(rejectAppointment(appointment._id));
-                        }}
-                      >
-                        رد
-                      </button>
-                    </div>
-                  </Row>
-                )}
-                <Link to={url}>
-                  <button className="btn">بازگشت</button>
-                </Link>
               </Row>
             ) : (
               <h6>اطلاعاتی برای نمایش وجود ندارد</h6>

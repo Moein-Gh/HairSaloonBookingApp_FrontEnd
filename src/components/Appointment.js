@@ -1,7 +1,7 @@
 import { Col, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import { SET_BACK_URL } from "../constants/userConstants";
+import { addToLocalStorage } from "../utils";
 
 const Appointment = ({ appointment }) => {
   const currentUrl = useLocation().pathname;
@@ -59,7 +59,7 @@ const Appointment = ({ appointment }) => {
             <Link
               to={`/appointmentScreen/${appointment._id}`}
               onClick={() => {
-                dispatch({ type: SET_BACK_URL, url: currentUrl });
+                addToLocalStorage("backUrl", currentUrl);
               }}
             >
               <button className="btn appointmentButton">اطلاعات بیشتر</button>
