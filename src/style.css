@@ -488,6 +488,7 @@ hr {
   padding: 0rem 1rem 0rem 1rem;
 }
 .facilityCardContainer {
+  background-color: whitesmoke;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
     rgb(209, 213, 219) 0px 0px 0px 1px inset;
   border-radius:10px;
@@ -603,6 +604,9 @@ margin: .5rem auto;
 /* -- profile info section */
 
 /* barberShop */
+.barberCardContainer{
+  text-align: center;
+}
 .barberSliderTab .css-19kzrtu {
   padding: 0;
 }
@@ -662,7 +666,6 @@ margin: .5rem auto;
 /* form */
 
 .formContainer {
-  background-color: lavender;
   padding: 1rem;
   border-radius: 5px;
   margin-top: 1rem;
@@ -711,6 +714,38 @@ margin: .5rem auto;
 
 /* -- time option */
 
+
+/* booking screen */
+
+.facilityCollapseContainer{
+margin : 1rem auto;
+
+}
+
+.facilityCollapse{
+background-color: rgb(212 202 150 / 44%);
+border-radius: 10px !important;
+box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.facilityCollapse .ant-collapse-header{
+font-size: 1.2rem;
+}
+
+.barberCollapseContainer{
+margin : 1rem auto;
+
+}
+
+.barberCollapse{
+background-color: rgb(152 198 211);
+border-radius: 10px !important;
+box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.barberCollapse .ant-collapse-header{
+font-size: 1.2rem;
+}
+/* -- booking screen */
+
 /* barbershops  */
 .barbershopTitle {
   text-align: center;
@@ -718,7 +753,14 @@ margin: .5rem auto;
 }
 .shopCardGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr  1fr 1fr 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 50px;
+
+}
+.shopCardGridNewAppointment {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   column-gap: 30px;
   row-gap: 50px;
 }
