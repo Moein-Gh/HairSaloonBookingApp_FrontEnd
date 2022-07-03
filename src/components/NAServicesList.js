@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Col, Row } from "react-bootstrap";
+import { useEffect } from 'react';
+import { Col, Row } from 'react-bootstrap';
 
 const NAServicesList = ({ serviceList }) => {
   const getPriceSum = (services) => {
@@ -25,55 +25,97 @@ const NAServicesList = ({ serviceList }) => {
   return (
     <>
       {serviceList.length === 0 ? (
-        <Row className="defaultContainer">
-          <Col>
-            <h5>خدمتی انتخاب نشده است</h5>
-          </Col>
-        </Row>
-      ) : (
-        <Row className="defaultContainer">
-          <Col>
-            <Row>
-              <Col xs={8}>
-                <h5>خدمات انتخاب شده</h5>
-                {serviceList.map((service) => {
-                  return <h6 key={Math.random()}>{service.title}</h6>;
-                })}
+        <Col className="appointmentServices">
+          <Row className="NAServicesListContainer">
+            <Row className="serviceTopRow">
+              <Col xs={6}>
+                <h6>خدمات</h6>
               </Col>
-              <Col xs={2}>
-                <h5>مدت زمان</h5>
-                {serviceList.map((service) => {
-                  return <h6 key={Math.random()}>{service.time} دقیقه</h6>;
-                })}
+              <Col xs={3}>
+                <h6 className="text-align-center">مدت زمان</h6>
               </Col>
-              <Col xs={2}>
-                <h5>مبلغ</h5>
-                {serviceList.map((service) => {
-                  return (
-                    <h6 key={Math.random()}>
-                      {service.price.toLocaleString()} تومان
-                    </h6>
-                  );
-                })}
+              <Col xs={3}>
+                <h6 className="text-align-center">مبلغ</h6>
               </Col>
             </Row>
             <hr />
-            <Row>
-              <Col xs={8}>
-                <h5>مجموع</h5>
+
+            <br />
+            <Row className="serviceTotalRow">
+              <Col xs={6}>
+                <h6>مجموع</h6>
               </Col>
-              <Col xs={2}>
-                <h5>{getDurationSum(serviceList)} دقیقه</h5>
+              <Col xs={3}>
+                <h6 className="text-align-center">{getDurationSum(serviceList)} دقیقه</h6>
               </Col>
-              <Col xs={2}>
-                <h5>{getPriceSum(serviceList).toLocaleString()} تومان</h5>
+              <Col xs={3}>
+                <h6 className="text-align-center">
+                  {getPriceSum(serviceList).toLocaleString()} تومان
+                </h6>
               </Col>
             </Row>
             <br />
-            <h6>
-              * مجموع مدت زمان نوبت به نزدیک ترین ربع ساعت به سمت بالا گرد شده
-              است
-            </h6>
+          </Row>
+        </Col>
+      ) : (
+        <Row>
+          <Col className="appointmentServices">
+            {serviceList && serviceList.length !== 0 && (
+              <Row className="NAServicesListContainer">
+                <Row className="serviceTopRow">
+                  <Col xs={6}>
+                    <h6>خدمات</h6>
+                  </Col>
+                  <Col xs={3}>
+                    <h6 className="text-align-center">مدت زمان</h6>
+                  </Col>
+                  <Col xs={3}>
+                    <h6 className="text-align-center">مبلغ</h6>
+                  </Col>
+                </Row>
+                <hr />
+                <Row>
+                  {serviceList.map((service) => {
+                    return (
+                      <Row className="serviceRow">
+                        <Col
+                          xs={6}
+                          // style={{ paddingLeft: "1rem !important" }}
+                        >
+                          <h6 key={Math.random()}>{service.title}</h6>
+                        </Col>
+                        <Col xs={3}>
+                          <h6 className="text-align-center" key={Math.random()}>
+                            {service.time} دقیقه
+                          </h6>
+                        </Col>
+                        <Col xs={3}>
+                          <h6 className="text-align-center" key={Math.random()}>
+                            {service.price.toLocaleString()} تومان
+                          </h6>
+                        </Col>
+                      </Row>
+                    );
+                  })}
+                </Row>
+
+                <br />
+                <Row className="serviceTotalRow">
+                  <Col xs={6}>
+                    <h6>مجموع</h6>
+                  </Col>
+                  <Col xs={3}>
+                    <h6 className="text-align-center">{getDurationSum(serviceList)} دقیقه</h6>
+                  </Col>
+                  <Col xs={3}>
+                    <h6 className="text-align-center">
+                      {getPriceSum(serviceList).toLocaleString()} تومان
+                    </h6>
+                  </Col>
+                </Row>
+                <br />
+              </Row>
+            )}
           </Col>
         </Row>
       )}

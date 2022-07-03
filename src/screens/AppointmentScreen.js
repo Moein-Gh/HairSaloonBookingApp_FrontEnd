@@ -1,58 +1,43 @@
-import { useEffect } from "react";
-import { Col, Row } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useEffect } from 'react';
+import { Col, Row } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import {
   approveAppointment,
   getAppointmentDetail,
   rejectAppointment,
-} from "../actions/appointmentActions";
-import Loader from "../components/Loader";
-import { getFromLocalStorage } from "../utils";
+} from '../actions/appointmentActions';
+import Loader from '../components/Loader';
+import { getFromLocalStorage } from '../utils';
 
 const AppointmentScreen = () => {
   let dispatch = useDispatch();
   let navigate = useNavigate();
 
-  let { appointmentId } = useParams("appointmentId");
+  let { appointmentId } = useParams('appointmentId');
 
   const userLogin = useSelector((state) => {
     return state.userLogin;
   });
-  const { loading, error, userInfo } = userLogin;
+  const { userInfo } = userLogin;
 
-  const url = getFromLocalStorage("backUrl");
+  const url = getFromLocalStorage('backUrl');
 
   const editAppointmentApprove = useSelector((state) => {
     return state.editAppointmentApprove;
   });
-  const {
-    loading: approveLoading,
-    error: approveError,
-    message: approveMessage,
-    reset: approveReset,
-  } = editAppointmentApprove;
+  const { reset: approveReset } = editAppointmentApprove;
 
   const editAppointmentReject = useSelector((state) => {
     return state.editAppointmentReject;
   });
-  const {
-    loading: rejectLoading,
-    error: rejectError,
-    message: rejectMessage,
-    reset: rejectReset,
-  } = editAppointmentReject;
+  const { reset: rejectReset } = editAppointmentReject;
 
   const appointmentDetail = useSelector((state) => {
     return state.appointmentDetail;
   });
-  const {
-    loading: appointmentDetailLoading,
-    error: appointmentDetailError,
-    appointment,
-  } = appointmentDetail;
+  const { loading: appointmentDetailLoading, appointment } = appointmentDetail;
 
-  if (appointment) console.log(appointment);
   const getPriceSum = (services) => {
     let sum = 0;
     services.forEach((service) => {
@@ -73,11 +58,11 @@ const AppointmentScreen = () => {
   };
 
   useEffect(() => {
-    if (!userInfo) navigate("/login");
+    if (!userInfo) navigate('/login');
     else {
       dispatch(getAppointmentDetail(appointmentId));
     }
-  }, [userInfo, appointmentId, approveReset, rejectReset]);
+  }, [dispatch, navigate, userInfo, appointmentId, approveReset, rejectReset]);
 
   return (
     <>
@@ -89,24 +74,23 @@ const AppointmentScreen = () => {
             ) : appointment ? (
               <Row>
                 <Col md={7} className="appointmentDetail">
-                  <Row className={"defaultContainer"}>
+                  <Row className={'defaultContainer'}>
                     <h5 className="sectionTitle">اطلاعات نوبت</h5>
                     <Col
                       md={6}
-                      style={{ borderLeft: ".5px solid lightgrey" }}
-                      className={"appointmentDetailColumn"}
+                      style={{ borderLeft: '.5px solid lightgrey' }}
+                      className={'appointmentDetailColumn'}
                     >
                       <Col>
                         <Row className="profileInfoRow">
                           <Col>
-                            <h6 className="profileInfoKey"> نام آرایشگاه</h6>{" "}
-                            &nbsp;
+                            <h6 className="profileInfoKey"> نام آرایشگاه</h6> &nbsp;
                           </Col>
                           <Col>
                             <div className="profileInfoValue">
                               {appointment.facility && appointment.facility.name
                                 ? appointment.facility.name
-                                : "نا مشخص"}
+                                : 'نا مشخص'}
                             </div>
                           </Col>
                         </Row>
@@ -114,14 +98,13 @@ const AppointmentScreen = () => {
                       <Col>
                         <Row className="profileInfoRow">
                           <Col>
-                            <h6 className="profileInfoKey"> نام نوبت گیرنده</h6>{" "}
-                            &nbsp;
+                            <h6 className="profileInfoKey"> نام نوبت گیرنده</h6> &nbsp;
                           </Col>
                           <Col>
                             <div className="profileInfoValue">
                               {appointment.user && appointment.user.name
                                 ? appointment.user.name
-                                : "نا مشخص"}
+                                : 'نا مشخص'}
                             </div>
                           </Col>
                         </Row>
@@ -129,31 +112,27 @@ const AppointmentScreen = () => {
                       <Col>
                         <Row className="profileInfoRow">
                           <Col>
-                            <h6 className="profileInfoKey"> نام آرایشگر</h6>{" "}
-                            &nbsp;
+                            <h6 className="profileInfoKey"> نام آرایشگر</h6> &nbsp;
                           </Col>
                           <Col>
                             <div className="profileInfoValue">
                               {appointment.barber && appointment.barber.name
                                 ? appointment.barber.name
-                                : "نا مشخص"}
+                                : 'نا مشخص'}
                             </div>
                           </Col>
                         </Row>
                       </Col>
                     </Col>
-                    <Col md={6} className={"appointmentDetailColumn"}>
+                    <Col md={6} className={'appointmentDetailColumn'}>
                       <Col>
                         <Row className="profileInfoRow">
                           <Col>
-                            <h6 className="profileInfoKey"> زمان شروع نوبت</h6>{" "}
-                            &nbsp;
+                            <h6 className="profileInfoKey"> زمان شروع نوبت</h6> &nbsp;
                           </Col>
                           <Col>
                             <div className="profileInfoValue">
-                              {appointment.startTime
-                                ? appointment.startTime
-                                : "نا مشخص"}
+                              {appointment.startTime ? appointment.startTime : 'نا مشخص'}
                             </div>
                           </Col>
                         </Row>
@@ -161,14 +140,11 @@ const AppointmentScreen = () => {
                       <Col>
                         <Row className="profileInfoRow">
                           <Col>
-                            <h6 className="profileInfoKey"> زمان پایان نوبت</h6>{" "}
-                            &nbsp;
+                            <h6 className="profileInfoKey"> زمان پایان نوبت</h6> &nbsp;
                           </Col>
                           <Col>
                             <div className="profileInfoValue">
-                              {appointment.endTime
-                                ? appointment.endTime
-                                : "نا مشخص"}
+                              {appointment.endTime ? appointment.endTime : 'نا مشخص'}
                             </div>
                           </Col>
                         </Row>
@@ -176,20 +152,19 @@ const AppointmentScreen = () => {
                       <Col>
                         <Row className="profileInfoRow">
                           <Col>
-                            <h6 className="profileInfoKey">وضعیت نوبت</h6>{" "}
-                            &nbsp;
+                            <h6 className="profileInfoKey">وضعیت نوبت</h6> &nbsp;
                           </Col>
                           <Col>
                             <div className="profileInfoValue">
                               {appointment.status
-                                ? appointment.status === "submitted"
-                                  ? "در انتطار بررسی"
-                                  : appointment.status === "approved"
-                                  ? "تایید شده"
-                                  : appointment.status === "rejected"
-                                  ? "رد شده"
-                                  : "نا مشخص"
-                                : "نا مشخص"}
+                                ? appointment.status === 'submitted'
+                                  ? 'در انتطار بررسی'
+                                  : appointment.status === 'approved'
+                                  ? 'تایید شده'
+                                  : appointment.status === 'rejected'
+                                  ? 'رد شده'
+                                  : 'نا مشخص'
+                                : 'نا مشخص'}
                             </div>
                           </Col>
                         </Row>
@@ -197,7 +172,7 @@ const AppointmentScreen = () => {
                     </Col>
                     <Row>
                       <div className="appointmentStatusButtonContainer">
-                        {appointment.status === "submitted" && (
+                        {appointment.status === 'submitted' && (
                           <div>
                             <button
                               className="btn appointmentStatusButton"
@@ -209,7 +184,7 @@ const AppointmentScreen = () => {
                             </button>
                             <button
                               className="btn appointmentStatusButton"
-                              style={{ backgroundColor: "#ff8f8f" }}
+                              style={{ backgroundColor: '#ff8f8f' }}
                               onClick={() => {
                                 dispatch(rejectAppointment(appointment._id));
                               }}
@@ -222,7 +197,7 @@ const AppointmentScreen = () => {
                           <Link to={url} key={url}>
                             <button
                               className="btn appointmentStatusButton"
-                              style={{ backgroundColor: "rgb(212 202 150)" }}
+                              style={{ backgroundColor: 'rgb(212 202 150)' }}
                             >
                               بازگشت
                             </button>
@@ -252,7 +227,7 @@ const AppointmentScreen = () => {
                       <Row>
                         {appointment.services.map((service) => {
                           return (
-                            <Row className="serviceRow">
+                            <Row className="serviceRow" key={Math.random()}>
                               <Col
                                 xs={6}
                                 // style={{ paddingLeft: "1rem !important" }}
@@ -260,18 +235,12 @@ const AppointmentScreen = () => {
                                 <h6 key={Math.random()}>{service.title}</h6>
                               </Col>
                               <Col xs={3}>
-                                <h6
-                                  className="text-align-center"
-                                  key={Math.random()}
-                                >
+                                <h6 className="text-align-center" key={Math.random()}>
                                   {service.time} دقیقه
                                 </h6>
                               </Col>
                               <Col xs={3}>
-                                <h6
-                                  className="text-align-center"
-                                  key={Math.random()}
-                                >
+                                <h6 className="text-align-center" key={Math.random()}>
                                   {service.price.toLocaleString()} تومان
                                 </h6>
                               </Col>
@@ -292,8 +261,7 @@ const AppointmentScreen = () => {
                         </Col>
                         <Col xs={3}>
                           <h6 className="text-align-center">
-                            {getPriceSum(appointment.services).toLocaleString()}{" "}
-                            تومان
+                            {getPriceSum(appointment.services).toLocaleString()} تومان
                           </h6>
                         </Col>
                       </Row>

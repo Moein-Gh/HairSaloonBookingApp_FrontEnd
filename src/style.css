@@ -48,13 +48,12 @@ h1 {
   background-color: rgb(248, 170, 170);
 }
 .btn:hover {
-  transform: scale(1.05);
+  transform: translateY(-3px);
   color: black;
   /* background-color: black; */
 }
 
 .btn:active {
-  transform: scale(0.98);
   outline: none !important;
   box-shadow: var(--shadow);
 }
@@ -131,13 +130,13 @@ h6 {
   margin-bottom: 0 !important;
 }
 .pageContainer {
-  min-height: 100vh;
+  min-height: 100vh;            
 }
 .mainColumn {
   max-width: 1400px;
   margin: auto;
   padding: 2rem 1rem;
-  min-height: 680px;
+  min-height:710px;
 }
 .sectionTitle{
 text-align: center;
@@ -649,11 +648,39 @@ margin: .5rem auto;
 
 /* Service */
 
+.NAServicesListContainer{
+  background-color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
 .serviceItem {
   padding: 1rem;
   margin: 0.5rem 0rem;
   border-radius: 5px;
-  background-color: #9aa9c9a3;
+  background-image: linear-gradient( 64.5deg,  rgba(245, 116, 185, 0.295) 14.7%, rgba(89, 98, 223, 0.384) 88.7% );
+}
+.serviceTitleContainer{
+ margin: auto;
+}
+.servicePriceContainer{
+ margin: auto;
+}
+.serviceDurationContainer{
+ margin: auto;
+}
+.serviceButton{
+  padding-right: 1rem;
+  padding-left: 1rem;
+  border-radius: 5px;
+  margin: auto;
+  display: block;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.serviceButton:focus , .serviceButton:active{
+
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px !important;
 }
 
 /* -- Service */
@@ -696,20 +723,64 @@ margin: .5rem auto;
   padding-right: 24px !important;
   padding-top: 10px !important;
 }
+.chooseDateContainer{
+  background-color: #d2ebe1;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
 
 .datePickerContainer {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+}
+
+
+.DatePicker{
+  padding: .5rem;
+}
+
+.DatePicker input{
+  padding: .5rem;
+  border-radius: 10px;
+  font-size: .8rem;
+}
+
+.showTimes{
+  padding: .4rem;
+  border-radius: 5px;
+  border: 1px solid rgb(0 0 0 / 50%);
+  background-color: #e4dac8;
+  font-size: .9rem;
+  
 }
 /* -- form */
 
 /* time option */
-
+.chooseTimeContainer{
+  background-color: #d2d2eb;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
 .timeOptionContainer {
   border-radius: 10px;
   background-color: #c5cae9;
   padding: 1rem;
   margin: 3px;
+}
+.ant-space-vertical{
+  display: grid;
+  justify-items: center;
+}
+
+.timeOptionText{
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 /* -- time option */
@@ -767,6 +838,13 @@ font-size: 1.2rem;
 
 /* --barbershops  */
 
+.backToHome{
+  display: block;
+}
+
+
+
+
 /* barber dashboard */
 
 .barberSalaryAppointment {
@@ -814,7 +892,7 @@ height: 100%;
   padding-right: 1rem;
   padding-top: 1rem ;
   padding-bottom: 1rem ;
-  background-color: rgb(219, 240, 207);
+  background-color: rgba(194, 247, 244, 0.63);
   border-radius: 10px;
   margin-top: .5rem;
   margin-bottom: .5rem;
@@ -831,7 +909,7 @@ height: 100%;
   padding-right: 1rem;
   padding-top: 1rem ;
   padding-bottom: 1rem ;
-  background-color: rgb(221, 243, 241);
+  background-color: rgb(201 255 207);
   border-radius: 10px;
   margin-top: .5rem;
   margin-bottom: .5rem;

@@ -1,7 +1,6 @@
 import { Col, Image, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
 import { NEW_APPOINTMENT_BARBER_INFO } from "../constants/appointmentConstants";
 import { SELECT_BARBER } from "../constants/userConstants";
 
@@ -44,14 +43,7 @@ const NewAppointmentBarberCard = ({ barber }) => {
 
 				<Row className="mb-2">
 					<Col>
-						<HashLink
-							smooth
-							scroll={(el) => {
-								scrollWidthOffset(el, headerHeight);
-							}}
-							to={`/barbershop/${facilityId}#services`}
-							className="barberCardButton"
-						>
+						<div className="barberCardButton">
 							<button
 								className="btn"
 								onClick={() => {
@@ -63,7 +55,7 @@ const NewAppointmentBarberCard = ({ barber }) => {
 							>
 								انتخاب آرایشگر
 							</button>
-						</HashLink>
+						</div>
 					</Col>
 				</Row>
 			</Row>

@@ -41,44 +41,11 @@ const ChooseBarber = () => {
 		<>
 			<Row>
 				<Col>
-					{/* <Row className="selectFormContainer">
-						{" "}
-						<Select
-							key={NAFacilityId}
-							className="selectForm"
-							showSearch
-							placeholder="نام آرایشگر مورد نظر خود را انتخاب کنید"
-							optionFilterProp="children"
-							allowClear
-							onChange={onChange}
-							disabled={!NAFacilityId}
-							filterOption={(input, option) =>
-								option.children.indexOf(input) >= 0
-							}
-						>
-							{barbers ? (
-								<>
-									<Option value="0">هیچکدام</Option>
-									{barbers &&
-										barbers.map((barber) => {
-											let optionName = barber.name;
-											return (
-												<Option key={barber._id} value={barber._id}>
-													{optionName}
-												</Option>
-											);
-										})}
-								</>
-							) : (
-								<Option value="0">هیچکدام</Option>
-							)}
-						</Select>
-					</Row> */}
 					<div className="shopCardGridNewAppointment">
 						{NAFacilityId && barbers && barbers.length !== 0 ? (
 							barbers.map((barber) => {
 								return (
-									<div>
+									<div key={Math.random()}>
 										<NewAppointmentBarberCard
 											key={barber._id}
 											barber={barber}
@@ -90,22 +57,6 @@ const ChooseBarber = () => {
 							<h5>آرایشگری برای نمایش وجود ندارد</h5>
 						)}
 					</div>
-					{/* <Row>
-						<div className="shopCardGridNewAppointment">
-							{barbers.length !== 0 ? (
-								barbers.map((facility) => {
-									return (
-										<NewAppointmentBarberCard
-											key={facility._id}
-											facility={facility}
-										/>
-									);
-								})
-							) : (
-								<h4>آرایشگاهی برای نمایش وجود ندارد</h4>
-							)}
-						</div>
-					</Row> */}
 				</Col>
 			</Row>
 		</>

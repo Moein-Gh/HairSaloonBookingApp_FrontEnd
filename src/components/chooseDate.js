@@ -1,16 +1,9 @@
-import React from "react";
-import { Col, Row } from "react-bootstrap";
-import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
-import { useDispatch, useSelector } from "react-redux";
-import { getPossibleTimes } from "../actions/appointmentActions";
-import { EMPTY_POSSIBLE_TIMES } from "../constants/appointmentConstants";
-import { utils } from "@hassanmojab/react-modern-calendar-datepicker";
-const ChooseDate = ({
-  selectedDay,
-  setSelectedDay,
-  serviceList,
-  setSelectedTime,
-}) => {
+import DatePicker, { utils } from '@hassanmojab/react-modern-calendar-datepicker';
+import { Col, Row } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPossibleTimes } from '../actions/appointmentActions';
+import { EMPTY_POSSIBLE_TIMES } from '../constants/appointmentConstants';
+const ChooseDate = ({ selectedDay, setSelectedDay, serviceList, setSelectedTime }) => {
   const dispatch = useDispatch();
   const NABarberInfo = useSelector((state) => {
     return state.NABarberInfo;
@@ -40,9 +33,10 @@ const ChooseDate = ({
   };
   return (
     <>
-      <Row className="defaultContainer mt-4">
-        <Col className="datePickerContainer mx-4">
-          <h4>انتخاب روز نوبت</h4>
+      <Row className="chooseDateContainer mt-4 mx-2">
+        <h4 className="sectionTitle">انتخاب روز</h4>
+        <hr />
+        <Col className="datePickerContainer m-4">
           <DatePicker
             value={selectedDay}
             onChange={(e) => {
@@ -52,14 +46,14 @@ const ChooseDate = ({
               setSelectedDay(e);
             }}
             shouldHighlightWeekends
-            minimumDate={utils("fa").getToday()}
+            minimumDate={utils('fa').getToday()}
             locale="fa"
             renderFooter={() => (
               <div
                 style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  padding: "1rem 2rem",
+                  display: 'flex',
+                  justifyContent: 'center',
+                  padding: '1rem 2rem',
                 }}
               >
                 <button
@@ -76,8 +70,8 @@ const ChooseDate = ({
               </div>
             )}
           />
-          <button disabled={!selectedDay} onClick={PossibleTimesHandler}>
-            گرفتن زمان ها
+          <button className="showTimes" disabled={!selectedDay} onClick={PossibleTimesHandler}>
+            نمایش زمان ها
           </button>
         </Col>
       </Row>

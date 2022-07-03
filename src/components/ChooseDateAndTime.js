@@ -1,8 +1,7 @@
-import React from "react";
-import { Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import ChooseDate from "./chooseDate";
-import ChooseTime from "./ChooseTime";
+import { Col, Row } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import ChooseDate from './chooseDate';
+import ChooseTime from './ChooseTime';
 
 const ChooseDateAndTime = ({
   selectedDay,
@@ -17,19 +16,24 @@ const ChooseDateAndTime = ({
   const { possibleTimes: times } = possibleTimes;
   return (
     <>
-      <ChooseDate
-        selectedDay={selectedDay}
-        setSelectedDay={setSelectedDay}
-        serviceList={serviceList}
-        setSelectedTime={setSelectedTime}
-      />
-
-      <ChooseTime
-        possibleTimes={times}
-        selectedDay={selectedDay}
-        selectedTime={selectedTime}
-        setSelectedTime={setSelectedTime}
-      />
+      <Row>
+        <Col md={'6'}>
+          <ChooseDate
+            selectedDay={selectedDay}
+            setSelectedDay={setSelectedDay}
+            serviceList={serviceList}
+            setSelectedTime={setSelectedTime}
+          />
+        </Col>
+        <Col md={'6'}>
+          <ChooseTime
+            possibleTimes={times}
+            selectedDay={selectedDay}
+            selectedTime={selectedTime}
+            setSelectedTime={setSelectedTime}
+          />
+        </Col>
+      </Row>
     </>
   );
 };
